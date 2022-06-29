@@ -1,0 +1,4 @@
+<resources>
+    <string name="signin">SignIn</string>
+    <string name="app_name">SoundMemo</string>
+</resources>
