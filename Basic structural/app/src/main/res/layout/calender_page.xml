@@ -16,24 +16,24 @@
         android:id="@+id/acticity1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Activity: eat breakfast"
-        android:textSize="20dp"
         android:layout_below="@id/calendarView"
-        ></TextView>
+        android:text="Activity: eat breakfast"
+        android:textSize="20dp"></TextView>
+
     <TextView
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Time: 7:00 AM"
-        android:textSize="20dp"
         android:layout_below="@id/acticity1"
-        ></TextView>
+        android:text="Time: 7:00 AM"
+        android:textSize="20dp"></TextView>
 
     <TextView
         android:id="@+id/tip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/time"
+        android:layout_marginTop="2dp"
         android:text="Tips: Warm milk"
         android:textSize="20dp"></TextView>
 
@@ -41,8 +41,7 @@
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        />
+        android:text="add" />
 </RelativeLayout>

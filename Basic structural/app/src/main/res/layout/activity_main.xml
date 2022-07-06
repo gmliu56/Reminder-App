@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SunInMemo"
+        android:text="SoundMemo"
         android:textColor="@color/purple_700"
         android:textSize="40sp"
 
@@ -127,6 +127,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Login_button"
         tools:ignore="MissingConstraints" />
+
+    // Google Sign In Button
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="545dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
