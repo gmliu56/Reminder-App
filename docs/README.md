@@ -1,7 +1,7 @@
 SoundMemo
 =========
 **SoundMemo**: 
-# About this project
+# Project Description
 
 SFU-CMPT276 Introduction to software Engineering
 
