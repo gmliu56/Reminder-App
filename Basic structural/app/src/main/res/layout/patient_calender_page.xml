@@ -9,6 +9,7 @@
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         >
     </CalendarView>
 
@@ -40,12 +41,4 @@
         android:textSize="20sp">
     </TextView>
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Add_btn"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        />
 </RelativeLayout>
