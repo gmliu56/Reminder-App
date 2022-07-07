@@ -35,7 +35,7 @@ This file includes the basic user interface design for the calendar component an
 
 **incoming_act_page.xml**
 This file contains the basic user interface design for the patient reminder interface.
-    **Some features still unimplemented.**
+**Some features still unimplemented.**
 
 **login_page.xml**
 This file includes the basic user interface design of the login interface.
@@ -45,8 +45,12 @@ This file is the basic page that the patient can't do anything with, and it cont
 
 **MainActivity.java**
 This file contains the API for verifying account and password functions with Google account login. 
-    **Still not in line with the actual use of the scene.**
+**Still not in line with the actual use of the scene.**
+
 ## Authors
+
+SFU cmpt276: Introduction to Software Engineering
+
 Group 08
 
 Team Member:
