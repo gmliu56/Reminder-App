@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".addPage">
 
     <!--    <Button-->
     <!--        android:id="@+id/Time_set"-->
@@ -47,7 +47,7 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Tips_set"
@@ -59,23 +59,23 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </TextView>
+
+    <!--        tools:ignore="MissingConstraints">-->
+
 
     <Button
         android:id="@+id/addDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:text="@string/Set_done"
+        android:layout_marginTop="76dp"
 
+        android:text="@string/Set_done"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Tips_set"
-        app:layout_constraintTop_toBottomOf="@+id/Tips_set"
-        tools:ignore="MissingConstraints">
-
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/Tips_set" />
 
     <EditText
         android:id="@+id/text_activity"
@@ -83,16 +83,17 @@
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
+        android:autofillHints="nothing"
         android:hint="@string/Enter_act"
+        android:inputType="textAutoCorrect"
         android:paddingTop="0dp"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@+id/Act_set"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Act_set"
-        app:layout_constraintTop_toTopOf="@id/Act_set">
+        app:layout_constraintTop_toTopOf="@id/Act_set" />
 
-    </EditText>
 
     <EditText
         android:id="@+id/text_tips"
@@ -100,12 +101,17 @@
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
+        android:autofillHints="nothing"
         android:hint="@string/Enter_tips"
+        android:inputType="textAutoCorrect"
         android:paddingTop="0dp"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@+id/Tips_set"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Tips_set"
-        app:layout_constraintTop_toTopOf="@id/Tips_set"></EditText>
+        app:layout_constraintTop_toTopOf="@id/Tips_set" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

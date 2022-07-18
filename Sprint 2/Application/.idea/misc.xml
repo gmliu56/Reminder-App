@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Application/Application/app/src/main/res/layout/activity_add_page1.xml" value="0.5494791666666666" />
-        <entry key="..\:/Application/Application/app/src/main/res/layout/add_page.xml" value="0.5494791666666666" />
+        <entry key="..\:/Application/Application/app/src/main/res/layout/add_page.xml" value="0.1" />
+        <entry key="..\:/Application/Application/app/src/main/res/layout/calender_page.xml" value="0.3932291666666667" />
         <entry key="..\:/Application/Application/app/src/main/res/layout/patient_calender_page.xml" value="0.2586050724637681" />
       </map>
     </option>

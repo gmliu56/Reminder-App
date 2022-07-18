@@ -17,7 +17,7 @@
         android:id="@+id/acticity1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Activity: eat breakfast"
+        android:text=""
         android:textSize="20sp"
         android:layout_below="@id/calendarView"
         >
@@ -26,7 +26,7 @@
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Time: 7:00 AM"
+        android:text="Time  :: "
         android:textSize="20sp"
         android:layout_below="@id/acticity1"
         >
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/time"
-        android:text="Tips: Warm milk"
+        android:text=""
         android:textSize="20sp">
     </TextView>
 

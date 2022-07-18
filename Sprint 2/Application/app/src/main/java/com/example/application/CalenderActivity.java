@@ -13,11 +13,34 @@ import android.widget.*;
 
 public class CalenderActivity extends AppCompatActivity{
     Button button = null;
+    TextView act_msg;
+    TextView tip_msg;
+   // TextView time_msg;
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calender_page);
         button = (Button) findViewById(R.id.add_button);
         //button.setBackgroundColor(Color.BLACK);
+
+
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("message");
+        String str2 = intent.getStringExtra("message2");
+       // String str3 = intent.getStringExtra("time");
+        act_msg = (TextView)findViewById(R.id.acticity1);
+
+        act_msg.setText(str);
+
+        tip_msg = (TextView)findViewById(R.id.tip);
+        tip_msg.setText(str2);
+
+
+        //time_msg = (TextView)findViewById(R.id.time);
+        //time_msg.setText(str3.toString());
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,6 +49,9 @@ public class CalenderActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+
+
 
 
     }
