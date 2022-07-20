@@ -3,6 +3,7 @@ package com.example.application;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.*;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class CalenderActivity extends AppCompatActivity{
     Button button = null;
@@ -51,8 +55,14 @@ public class CalenderActivity extends AppCompatActivity{
         });
 
 
-
-
+        // Retrieve user information if using Google sign-in
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+        }
 
     }
 
