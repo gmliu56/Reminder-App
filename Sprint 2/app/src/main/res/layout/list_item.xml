@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:firstDayOfWeek="2"
-        android:maxDate="07/20/2050"
-        android:minDate="07/20/2022"
-        android:theme="@style/CalenderViewCustom"
-        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"></CalendarView>
-
-
+    android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_below="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginTop="16dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,14 +52,4 @@
             android:text="8:35 pm">
         </TextView>
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Add_btn"
-        android:backgroundTint="@color/blue"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        />
-</RelativeLayout>
+</LinearLayout>

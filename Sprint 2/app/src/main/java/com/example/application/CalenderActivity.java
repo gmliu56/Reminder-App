@@ -17,8 +17,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class CalenderActivity extends AppCompatActivity{
     Button button = null;
-    TextView act_msg;
-    TextView tip_msg;
+    //TextView act_msg;
+    //TextView tip_msg;
    // TextView time_msg;
 
 
@@ -30,16 +30,16 @@ public class CalenderActivity extends AppCompatActivity{
         //button.setBackgroundColor(Color.BLACK);
 
 
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("message");
-        String str2 = intent.getStringExtra("message2");
+        //Intent intent = getIntent();
+        //String str = intent.getStringExtra("message");
+        //String str2 = intent.getStringExtra("message2");
        // String str3 = intent.getStringExtra("time");
-        act_msg = (TextView)findViewById(R.id.acticity1);
+        //act_msg = (TextView)findViewById(R.id.acticity1);
 
-        act_msg.setText(str);
+        //act_msg.setText(str);
 
-        tip_msg = (TextView)findViewById(R.id.tip);
-        tip_msg.setText(str2);
+        //tip_msg = (TextView)findViewById(R.id.tip);
+        //tip_msg.setText(str2);
 
 
         //time_msg = (TextView)findViewById(R.id.time);

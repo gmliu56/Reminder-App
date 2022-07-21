@@ -147,7 +147,7 @@
             android:text="@string/CareGiver_btn"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:checked="true" />
+             />
     </RadioGroup>
 
     //Log In Button
