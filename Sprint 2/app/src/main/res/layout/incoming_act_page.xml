@@ -91,7 +91,7 @@
                 android:id="@+id/phone_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 pills"
+                android:text="5 pills"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
 
@@ -140,7 +140,7 @@
                 android:id="@+id/country_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4:00PM"
+                android:text="8:35PM"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
 
