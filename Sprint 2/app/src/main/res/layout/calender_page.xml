@@ -5,13 +5,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="336dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:maxWidth="310dp"
+        android:maxHeight="210dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/e4e4" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-    </CalendarView>
+        android:firstDayOfWeek="2"
+        android:maxDate="07/20/2050"
+        android:minDate="07/20/2022"
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"></CalendarView>
 
     <TextView
         android:id="@+id/acticity1"
@@ -46,6 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Add_btn"
+        android:backgroundTint="@color/blue"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         />
