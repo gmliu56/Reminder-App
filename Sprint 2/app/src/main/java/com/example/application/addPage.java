@@ -17,8 +17,6 @@ public class addPage extends AppCompatActivity {
     Button button_done;
     Button button_camera;
     Button button_galley;
-    //TimePicker picker;
-    //TextView time;
     EditText send_text;
     EditText send_tips;
 
@@ -26,60 +24,14 @@ public class addPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_page);
-        //time = (TextView)findViewById(R.id.time);
-        //picker = (TimePicker)findViewById(R.id.datePicker1);
-//        picker.setIs24HourView(true);
-
-//        button = (Button) findViewById(R.id.Time_set);
-//        button.setBackgroundColor(Color.parseColor("#F8F8FF"));
-        send_text = findViewById(R.id.text_activity);
-        send_tips = findViewById(R.id.text_tips);
-
 
         button_done = findViewById(R.id.addDone);
-//        button_camera = findViewById(R.id.);
-//        button_galley = findViewById(R.id.);
 
         button_done.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-               // int hour, minute;
-
-
-                String str = send_text.getText().toString();
-                String str2 = send_tips.getText().toString();
-                //String am_pm;
-
-
-
-//                if (Build.VERSION.SDK_INT >= 23 ){
-//                    hour = picker.getHour();
-//                    minute = picker.getMinute();
-//                }
-//                else{
-//                    hour = picker.getCurrentHour();
-//                    minute = picker.getCurrentMinute();
-//                }
-//                if(hour > 12) {
-//                    am_pm = "PM";
-//                    hour = hour - 12;
-//                }
-//                else
-//                {
-//                    am_pm="AM";
-//                }
-//                time.setText("Selected Date: "+ hour +":"+ minute+" "+am_pm);
-
-
-
-
 
                 Intent intent = new Intent(getApplicationContext(), CalenderActivity.class);
-                intent.putExtra("message",str);
-                intent.putExtra("message2",str2);
-                //intent.putExtra("time",am_pm);
                 startActivity(intent);
                 }
         });

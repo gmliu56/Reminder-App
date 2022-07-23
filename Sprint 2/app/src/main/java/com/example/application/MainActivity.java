@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
     Button button = null;
+    Button btn_signup;
     //RadioButton radioBtn_patient = null;
     //RadioButton radioBtn_caretaker = null;
     RadioGroup radioGroup = null;
@@ -37,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login_page);
         radioGroup = findViewById(R.id.radioButton);
         button = (Button) findViewById(R.id.Login_button);
+        btn_signup = (Button) findViewById(R.id.Signup_button);
+
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, SignUpPage.class);
+                startActivity(intent);
+            }
+        });
         //case R.id.Patient:
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -77,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.sign_in_button:
                         signIn();
+                    case R.id.Signup_button:
                         break;
                 }
             }
@@ -90,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
     }
-
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
