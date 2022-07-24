@@ -19,18 +19,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     Button button = null;
     Button btn_signup;
-    //RadioButton radioBtn_patient = null;
-    //RadioButton radioBtn_caretaker = null;
     RadioGroup radioGroup = null;
-
-    // Google sign-in variables
     int RC_SIGN_IN = 0;
     SignInButton googleSignInButton;
     GoogleSignInClient mGoogleSignInClient;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.Login_button);
         btn_signup = (Button) findViewById(R.id.Signup_button);
 
+
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("TAG", "------------- ");
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, SignUpPage.class);
                 startActivity(intent);
             }
         });
-        //case R.id.Patient:
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -88,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.sign_in_button:
                         signIn();
-                    case R.id.Signup_button:
-                        break;
                 }
             }
         });
@@ -100,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
     }
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
