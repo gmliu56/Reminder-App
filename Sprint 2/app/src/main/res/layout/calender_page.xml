@@ -73,9 +73,19 @@
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Add_btn"
+        android:text="Add task"
         android:backgroundTint="@color/blue"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         />
+
+    <Button
+        android:id="@+id/view_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="63dp"
+        android:backgroundTint="@color/blue"
+        android:text="View tasks" />
 </RelativeLayout>
