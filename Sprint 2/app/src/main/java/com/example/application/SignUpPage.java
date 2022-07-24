@@ -30,15 +30,6 @@ public class SignUpPage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mRePassword = findViewById(R.id.et_repassword);
 
-        //back to Login page
-
-        /*
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-        }
-*/
-
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +63,7 @@ public class SignUpPage extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(SignUpPage.this,"User Created Successfully",Toast.LENGTH_SHORT).show();
-                            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
                         else{
                             Toast.makeText(SignUpPage.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();
