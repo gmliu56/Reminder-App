@@ -30,6 +30,7 @@ public class SignUpPage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mRePassword = findViewById(R.id.et_repassword);
 
+        //check sign up information correct.
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +58,7 @@ public class SignUpPage extends AppCompatActivity {
                     mRePassword.setError("Not match with your password");
                     return;
                 }
-
+                //fire base check
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -71,6 +72,7 @@ public class SignUpPage extends AppCompatActivity {
                     }
                 });
 
+                //sign up dome, jump back.
                 Intent intent = new Intent();
                 intent.setClass(SignUpPage.this, MainActivity.class);
                 startActivity(intent);

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.text_userPass);
         fAuth = FirebaseAuth.getInstance();
 
+        //Log in with checking firebase
         btn_login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this,"Log In Successfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Toast.makeText(MainActivity.this,"Please select system",Toast.LENGTH_SHORT).show();
+
                         }else{
                             Toast.makeText(MainActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
                             //startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        //sign in page jump to sign up page
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //system select and jump to different page
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
