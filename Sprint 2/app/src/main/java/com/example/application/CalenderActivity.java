@@ -15,25 +15,23 @@ import android.widget.*;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.database.FirebaseDatabase;
-
+//import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class CalenderActivity extends AppCompatActivity{
     Button add_button = null;
-    Button view_button;
+    Button view_button = null;
     CalendarView calendar;
     String day = "";
     //TextView act_msg;
     //TextView tip_msg;
     // TextView time_msg;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calender_page);
-        add_button = (Button) findViewById(R.id.add_button);
+        add_button = findViewById(R.id.add_button);
         view_button = findViewById(R.id.view_button);
         calendar = findViewById(R.id.calendarView);
 
@@ -45,23 +43,16 @@ public class CalenderActivity extends AppCompatActivity{
                 //FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(new Task("drink","", 10, 30, 15));
             }
         });
-        //button.setBackgroundColor(Color.BLACK);
 
+        view_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
 
-        //Intent intent = getIntent();
-        //String str = intent.getStringExtra("message");
-        //String str2 = intent.getStringExtra("message2");
-        // String str3 = intent.getStringExtra("time");
-        //act_msg = (TextView)findViewById(R.id.acticity1);
-
-        //act_msg.setText(str);
-
-        //tip_msg = (TextView)findViewById(R.id.tip);
-        //tip_msg.setText(str2);
-
-
-        //time_msg = (TextView)findViewById(R.id.time);
-        //time_msg.setText(str3.toString());
+                intent.setClass(CalenderActivity.this, EventsList.class);
+                startActivity(intent);
+            }
+        });
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,13 +65,6 @@ public class CalenderActivity extends AppCompatActivity{
                     intent.putExtra("date", day);
                     startActivity(intent);
                 }
-            }
-        });
-
-        view_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

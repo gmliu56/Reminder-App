@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.text_userid);
         mPassword = findViewById(R.id.text_userPass);
         fAuth = FirebaseAuth.getInstance();
-
         //Log in with checking firebase
         btn_login.setOnClickListener(new OnClickListener() {
             @Override
@@ -76,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-
         //sign in page jump to sign up page
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,28 +109,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Google sign-in activity
-        googleSignInButton = findViewById(R.id.sign_in_button);
-        googleSignInButton.setSize(SignInButton.SIZE_STANDARD);
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.sign_in_button:
-                        signIn();
+        //Google
+        {
+            // Google sign-in activity
+            googleSignInButton = findViewById(R.id.sign_in_button);
+            googleSignInButton.setSize(SignInButton.SIZE_STANDARD);
+            googleSignInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switch (view.getId()) {
+                        case R.id.sign_in_button:
+                            signIn();
+                    }
                 }
-            }
-        });
-        // Configure Google sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+            });
+            // Configure Google sign-in to request the user's ID, email address, and basic
+            // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+            // Build a GoogleSignInClient with the options specified by gso.
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        }
     }
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+
     protected void CheckCaretakerAccount(){
         String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
@@ -194,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -201,7 +199,10 @@ public class MainActivity extends AppCompatActivity {
         // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
     }
-
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -213,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-
     // Method to handle Google sign-in result, success or failure
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {

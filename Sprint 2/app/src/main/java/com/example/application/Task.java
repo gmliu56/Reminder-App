@@ -2,23 +2,29 @@ package com.example.application;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Task {
-    String task_name;
-    String tips;
-    int hour;
-    int minute;
-    int countDownTime;
+    public static ArrayList<Task> taskArrayList = new ArrayList<>();
+    private String task_name;
+    private String tips;
+    private int hour;
+    private int minute;
+    //private Date delete
 
     public Task() {
     }
 
-    public Task(String task_name, String tips, int hour, int minute, int countDownTime) {
+    public Task(String task_name, String tips, int hour, int minute) {
         this.task_name = task_name;
         this.tips = tips;
         this.hour = hour;
         this.minute = minute;
+        /*
+        delete = null;
         this.countDownTime = countDownTime;
+         */
     }
 
     public void setHour(int hour) {
@@ -45,9 +51,9 @@ public class Task {
         return tips;
     }
 
-    public int getCountDownTime() {
-        return countDownTime;
-    }
+    //public int getCountDownTime() {
+       // return countDownTime;
+   // }
 
     public void setTask_name(String task_name) {
         this.task_name = task_name;
@@ -57,8 +63,8 @@ public class Task {
         this.tips = tips;
     }
 
-    public void setCountDownTime(int countDownTime) {
-        this.countDownTime = countDownTime;
-    }
+   // public void setCountDownTime(int countDownTime) {
+        //this.countDownTime = countDownTime;
+    //}
 }
 
