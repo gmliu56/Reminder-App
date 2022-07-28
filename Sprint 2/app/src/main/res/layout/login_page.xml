@@ -88,9 +88,23 @@
         />
 
     // Password field to enter
+    <EditText
+        android:id="@+id/text_userPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/Password_hint"
+        android:paddingTop="0dp"
+        android:password="true"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="4dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/user_pwd"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_pwd"
+        app:layout_constraintTop_toTopOf="@id/user_pwd" />
 
     // Role Selection Instruction
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -176,21 +190,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Signup_button"/>
-
-    <EditText
-        android:id="@+id/text_userPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:hint="@string/Password_hint"
-        android:paddingTop="0dp"
-        android:password="true"
-        android:textColor="#000000"
-        android:textSize="18sp"
-
-        app:layout_constraintLeft_toRightOf="@+id/user_pwd"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_pwd"
-        app:layout_constraintTop_toTopOf="@id/user_pwd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

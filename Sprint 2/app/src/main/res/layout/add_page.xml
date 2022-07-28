@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/duration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addPage">
@@ -22,45 +21,44 @@
     <!--        tools:ignore="MissingConstraints,missing constrain">-->
     <!--    </Button>-->
 
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="22dp"
-        android:timePickerMode="spinner"
-        app:layout_constraintBottom_toTopOf="@+id/Act_text"
+    <TextView
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="5dp"
+        android:text="click to select Time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#333333"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/Act_text"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker1"
+        android:id="@+id/Act_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="300dp"
         android:text="@string/Set_activity"
         android:textColor="@color/black"
         android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
-        android:id="@+id/Tips_text"
+        android:id="@+id/Tips_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="20dp"
         android:text="@string/Set_tips"
         android:textColor="@color/black"
         android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Act_set"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 
     <!--        tools:ignore="MissingConstraints">-->
@@ -70,28 +68,16 @@
         android:id="@+id/addDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
 
         android:text="@string/Set_done"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toBottomOf="@+id/Tips_text" />
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="168dp"
-
-        android:text="Back"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toBottomOf="@+id/Tips_text" />
+        app:layout_constraintStart_toEndOf="@+id/Tips_set"
+        app:layout_constraintTop_toBottomOf="@+id/Tips_set" />
 
     <EditText
-        android:id="@+id/set_activity"
+        android:id="@+id/text_activity"
         android:layout_width="200dp"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
@@ -102,14 +88,14 @@
         android:paddingTop="0dp"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/Act_text"
+        app:layout_constraintLeft_toRightOf="@+id/Act_set"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Act_text"
-        app:layout_constraintTop_toTopOf="@id/Act_text" />
+        app:layout_constraintStart_toEndOf="@+id/Act_set"
+        app:layout_constraintTop_toTopOf="@id/Act_set" />
 
 
     <EditText
-        android:id="@+id/set_tips"
+        android:id="@+id/text_tips"
         android:layout_width="200dp"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
@@ -120,11 +106,10 @@
         android:paddingTop="0dp"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/Tips_text"
+        app:layout_constraintLeft_toRightOf="@+id/Tips_set"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toTopOf="@id/Tips_text" />
-
+        app:layout_constraintStart_toEndOf="@+id/Tips_set"
+        app:layout_constraintTop_toTopOf="@id/Tips_set" />
 
 
 
