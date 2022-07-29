@@ -13,8 +13,7 @@ import android.widget.Toast;
 import com.example.application.utils.Utils;
 import com.google.firebase.database.FirebaseDatabase;
 
-
-
+// Page for users to add a task to their to-do list
 public class addPage extends AppCompatActivity {
 
     Button button_done;

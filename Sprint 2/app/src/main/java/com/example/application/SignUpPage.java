@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+// Page for users sign up with their own email and password
 public class SignUpPage extends AppCompatActivity {
     Button btn_done = null;
     EditText mName,mEmail,mPassword,mRePassword;

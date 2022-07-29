@@ -38,6 +38,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+// Page when user launch the app, it will check if there is user signed in
 public class MainActivity extends AppCompatActivity {
     Button btn_login = null;
     Button btn_signup;

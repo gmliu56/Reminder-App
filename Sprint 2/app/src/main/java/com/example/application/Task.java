@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
+// Task Object
 public class Task {
     public static ArrayList<Task> taskArrayList = new ArrayList<>();
     private String task_name;

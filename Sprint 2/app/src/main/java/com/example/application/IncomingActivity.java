@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+// Page to display the upcoming task (reminder) when it is close to the time
 public class IncomingActivity extends AppCompatActivity {
 
     @Override

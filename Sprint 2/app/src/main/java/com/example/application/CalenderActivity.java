@@ -18,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 //import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
+// Default page when caretakers sign-in and/or open their app
 public class CalenderActivity extends AppCompatActivity{
     Button add_button = null;
     Button view_button = null;

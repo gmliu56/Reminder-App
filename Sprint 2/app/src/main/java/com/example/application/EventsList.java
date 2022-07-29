@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.application.utils.Utils;
 
+// Page of to-do list in a summary view
 public class EventsList extends AppCompatActivity {
     Button btn_add;
     @Override
