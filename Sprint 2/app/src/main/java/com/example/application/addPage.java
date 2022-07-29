@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.application.utils.Utils;
 import com.google.firebase.database.FirebaseDatabase;
+
+
 
 public class addPage extends AppCompatActivity {
 
@@ -22,12 +25,19 @@ public class addPage extends AppCompatActivity {
     EditText send_tips;
     //EditText send_duration;
     TimePicker time;
+    String mSelectTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_page);
         initWidget();
+        send_acts = findViewById(R.id.set_activity);
+        send_tips = findViewById(R.id.set_tips);
+
+
+        button_done = findViewById(R.id.addDone);
+
         button_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +55,9 @@ public class addPage extends AppCompatActivity {
                 Task task = new Task(activity,tips,hour,minute);
                 //Task.taskArrayList.add(task);
                 FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
+
+                //add calender
+                Utils.writeToCalendar(getApplicationContext(),activity,tips,day+" "+hour+":"+minute);
 
                 Intent intent = new Intent(addPage.this, CalenderActivity.class);
                 startActivity(intent);
