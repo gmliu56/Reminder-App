@@ -5,7 +5,7 @@ import android.app.Application;
 // The app crashes when this activity is used, saved for now
 public class MyApplication extends Application {
     // Global variable
-    private boolean isRoleCaretaker;
+    private boolean isRoleCaretaker = true;
 
     // Check the user's role, return true if user is caretaker
     // Return the boolean value of isRoleCaretaker
