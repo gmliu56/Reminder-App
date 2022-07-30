@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.splashscreen.SplashScreen;
 
 import com.example.application.utils.ToastUtils;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,29 +23,33 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     MyApplication myApplication = (MyApplication) this.getApplication();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Handle the splash screen transition.
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        // Check if there is a current user logged in
+        // get user authentication instance
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // check signed-in instance and role
         if (currentUser != null){
-            // If user is currently logged in, take them to corresponding page
-            if(myApplication.isCaretaker()){
-                Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
-                startActivity(caretakerIntent);
-            }else{
-                Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
-                startActivity(patientIntent);
-            }
-        }else{
-            // If user is NOT signed in, direct them to LoginActivity
-            Intent signInIntent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(signInIntent);
-        }
+                    // If user is currently logged in, take them to corresponding page
+                    if(myApplication.isCaretaker()){
+                        Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
+                        startActivity(caretakerIntent);
+                    }else{
+                        Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
+                        startActivity(patientIntent);
+                    }
+                }else{
+                    // If user is NOT signed in, direct them to LoginActivity
+                    Intent signInIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(signInIntent);
+                }
+
 
         // Ask for calender permission
         if (ContextCompat.checkSelfPermission(MainActivity.this,
