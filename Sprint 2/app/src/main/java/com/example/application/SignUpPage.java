@@ -19,6 +19,7 @@ public class SignUpPage extends AppCompatActivity {
     Button btn_done = null;
     EditText mName,mEmail,mPassword,mRePassword;
     FirebaseAuth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class SignUpPage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mRePassword = findViewById(R.id.et_repassword);
 
-        //check sign up information correct.
+        //check if sign up information has correct format
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,9 +74,9 @@ public class SignUpPage extends AppCompatActivity {
                     }
                 });
 
-                //sign up dome, jump back.
+                //sign up dome, go back to login page
                 Intent intent = new Intent();
-                intent.setClass(SignUpPage.this, MainActivity.class);
+                intent.setClass(SignUpPage.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

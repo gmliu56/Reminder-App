@@ -42,7 +42,10 @@
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/activity_incoming.xml" value="0.5494791666666666" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/calender_page.xml" value="0.5494791666666666" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/login_page.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.10914855072463768" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_page.xml" value="0.1359375" />
+        <entry key="app/src/main/res/layout/content_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/login_page.xml" value="0.1" />
       </map>
     </option>
