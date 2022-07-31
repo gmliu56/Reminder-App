@@ -35,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         // get user authentication instance
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Ask for calender permission
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR},1);
+        }
         // check signed-in instance and role
         if (currentUser != null){
             // If user is currently logged in, take them to corresponding page
@@ -54,15 +62,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-
-        // Ask for calender permission
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR},1);
-        }
 
 
     } // End of onCreate() method
