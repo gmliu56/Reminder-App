@@ -29,6 +29,7 @@ public class addPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.add_page);
         initWidget();
         send_acts = findViewById(R.id.set_activity);

@@ -91,64 +91,64 @@
 
     // Role Selection Instruction
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Who is using this device?"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:layout_marginTop="15dp"
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Who is using this device?"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        android:layout_marginTop="15dp"-->
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_pwd" />
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/user_pwd" />-->
 
     // Role selection radioButton group
-    <RadioGroup
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
+<!--    <RadioGroup-->
+<!--        android:id="@+id/radioButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="50dp"-->
 
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/user_pwd">
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/user_pwd">-->
 
-        // Patient button
-        <RadioButton
-            android:id="@+id/Patient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Patient_btn"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+<!--        // Patient button-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/Patient"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/Patient_btn"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp" />-->
 
-        // Caretaker button
-        <RadioButton
-            android:id="@+id/Caretaker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="@string/CareGiver_btn"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            />
-    </RadioGroup>
+<!--        // Caretaker button-->
+<!--        <RadioButton-->
+<!--            android:id="@+id/Caretaker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:text="@string/CareGiver_btn"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="18sp"-->
+<!--            />-->
+<!--    </RadioGroup>-->
 
     //Log In Button
     <Button
         android:id="@+id/Login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:text="@string/LogIn_btn"
         android:textColor="@color/black"
         android:textAllCaps="false"
         android:backgroundTint="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioButton"
+        app:layout_constraintTop_toBottomOf="@id/user_pwd"
 
         tools:ignore="MissingConstraints" />
 
@@ -161,7 +161,7 @@
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         android:textAllCaps="false"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Login_button"

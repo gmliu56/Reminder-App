@@ -23,6 +23,7 @@ public class SignUpPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.activity_sign_up_page);
 
         btn_done = (Button) findViewById(R.id.btn_register_done);
@@ -32,7 +33,7 @@ public class SignUpPage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         mRePassword = findViewById(R.id.et_repassword);
 
-        //check if sign up information has correct format
+        // Done button, check if sign up information has correct format
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,13 +61,13 @@ public class SignUpPage extends AppCompatActivity {
                     mRePassword.setError("Not match with your password");
                     return;
                 }
-                //fire base check
+                // Firebase sign up
                 fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(SignUpPage.this,"User Created Successfully",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         }
                         else{
                             Toast.makeText(SignUpPage.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();

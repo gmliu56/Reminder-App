@@ -44,17 +44,21 @@
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/login_page.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/btn_custom.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/et_custom.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_launch_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launch_icon.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_launch_icon_blue.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_btn.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.10914855072463768" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_role_selection.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_sign_up_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout/add_page.xml" value="0.1359375" />
         <entry key="app/src/main/res/layout/content_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/content_role_selection.xml" value="0.1105072463768116" />
         <entry key="app/src/main/res/layout/login_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1105072463768116" />
+        <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.11614583333333334" />
       </map>
     </option>
   </component>

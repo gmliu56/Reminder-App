@@ -30,25 +30,29 @@ public class MainActivity extends AppCompatActivity {
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTheme(R.style.Theme_Application);
 
         // get user authentication instance
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         // check signed-in instance and role
         if (currentUser != null){
-                    // If user is currently logged in, take them to corresponding page
-                    if(myApplication.isCaretaker()){
-                        Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
-                        startActivity(caretakerIntent);
-                    }else{
-                        Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
-                        startActivity(patientIntent);
-                    }
-                }else{
-                    // If user is NOT signed in, direct them to LoginActivity
-                    Intent signInIntent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(signInIntent);
-                }
+            // If user is currently logged in, take them to corresponding page
+            if(true){
+                Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
+                startActivity(caretakerIntent);
+                finish();
+            }else{
+                Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
+                startActivity(patientIntent);
+                finish();
+            }
+        }else{
+            // If user is NOT signed in, direct them to LoginActivity
+            Intent signInIntent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(signInIntent);
+            finish();
+        }
 
 
         // Ask for calender permission

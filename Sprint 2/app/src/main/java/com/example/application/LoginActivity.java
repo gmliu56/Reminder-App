@@ -6,14 +6,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,35 +22,29 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 // Users will log in/sign up if they do not already done so
 public class LoginActivity extends AppCompatActivity {
-    MyApplication myApplication = (MyApplication) this.getApplication();
+
     // Firebase credentials
     Button btn_login = null;
     Button btn_signup;
-    RadioGroup radioGroup = null;
+    //RadioGroup radioGroup = null;
     FirebaseAuth fAuth;
     EditText mEmail,mPassword;
 
     // Google credentials
     SignInButton googleSignInButton;
     GoogleSignInClient googleSignInClient;
-    private SignInClient oneTapClient;
-    private BeginSignInRequest signInRequest;
     private static final String TAG = "LoginActivity";
-    private int RC_SIGN_IN = 0;
-    private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
-    private boolean showOneTapUI = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        radioGroup = findViewById(R.id.radioButton);
+        //radioGroup = findViewById(R.id.radioButton);
         btn_login = (Button) findViewById(R.id.Login_button);
         btn_signup = (Button) findViewById(R.id.Signup_button);
         mEmail = findViewById(R.id.text_userid);
@@ -81,7 +72,12 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this,"Please select role",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Log in successfully",Toast.LENGTH_SHORT).show();
+                            // Go to RoleSelection
+                            Intent intent = new Intent();
+                            intent.setClass(LoginActivity.this, RoleSelection.class);
+                            startActivity(intent);
+
 
                         }else{
                             Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
@@ -101,49 +97,49 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         // Role select and go to the corresponding page
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.Patient:
-                        btn_login.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                CheckPatientAccount();
-                                //myApplication.setRolePatient();
-                            }
-                        });
-                        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                // Initialize sign in intent
-                                Intent intent = googleSignInClient.getSignInIntent();
-                                // Start activity for result
-                                startActivityForResult(intent,100);
-                            }
-                        });
-                        break;
-                    case R.id.Caretaker:
-                        btn_login.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                CheckCaretakerAccount();
-                                //myApplication.setRoleCaretaker();
-                            }
-                        });
-                        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                // Initialize sign in intent
-                                Intent intent = googleSignInClient.getSignInIntent();
-                                // Start activity for result
-                                startActivityForResult(intent,100);
-                            }
-                        });
-                        break;
-                }
-            }
-        });
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.Patient:
+//                        btn_login.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                CheckPatientAccount();
+//                                //myApplication.setRolePatient();
+//                            }
+//                        });
+//                        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                // Initialize sign in intent
+//                                Intent intent = googleSignInClient.getSignInIntent();
+//                                // Start activity for result
+//                                startActivityForResult(intent,100);
+//                            }
+//                        });
+//                        break;
+//                    case R.id.Caretaker:
+//                        btn_login.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                CheckCaretakerAccount();
+//                                //myApplication.setRoleCaretaker();
+//                            }
+//                        });
+//                        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                // Initialize sign in intent
+//                                Intent intent = googleSignInClient.getSignInIntent();
+//                                // Start activity for result
+//                                startActivityForResult(intent,100);
+//                            }
+//                        });
+//                        break;
+//                }
+//            }
+//        });
 
         // Google Sign-in
         // Reference: Geeksforgeeks
@@ -163,76 +159,76 @@ public class LoginActivity extends AppCompatActivity {
     } // End of onCreate() Method
 
     // Sign user in if they are caretaker
-    protected void CheckCaretakerAccount(){
-        String email = mEmail.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)){
-            mEmail.setError("Email is Required.");
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            mPassword.setError("Password is Required");
-            return;
-        }
-        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,"Log In Successfully",Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-                    Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this, CalenderActivity.class);
-                    startActivity(intent);
-
-                }else{
-                    Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
-                    //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-
-                }
-            }
-        });
-    }
+//    protected void CheckCaretakerAccount(){
+//        String email = mEmail.getText().toString().trim();
+//        String password = mPassword.getText().toString().trim();
+//
+//        if(TextUtils.isEmpty(email)){
+//            mEmail.setError("Email is Required.");
+//            return;
+//        }
+//        if(TextUtils.isEmpty(password)){
+//            mPassword.setError("Password is Required");
+//            return;
+//        }
+//        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(LoginActivity.this,"Log In Successfully",Toast.LENGTH_SHORT).show();
+//                    //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+//                    Intent intent = new Intent();
+//                    intent.setClass(LoginActivity.this, CalenderActivity.class);
+//                    startActivity(intent);
+//
+//                }else{
+//                    Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
+//                    //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+//
+//                }
+//            }
+//        });
+//    }
     // Sign user in if they are patient
-    protected void CheckPatientAccount(){
-        String email = mEmail.getText().toString().trim();
-        String password = mPassword.getText().toString().trim();
-
-        if(TextUtils.isEmpty(email)){
-            mEmail.setError("Email is Required.");
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            mPassword.setError("Password is Required");
-            return;
-        }
-        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,"Log In Successfully",Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    Intent intent = new Intent();
-                    intent.setClass(LoginActivity.this, IncomingActivity.class);
-                    startActivity(intent);
-
-                }else{
-                    Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
-
-                }
-            }
-        });
-    }
+//    protected void CheckPatientAccount(){
+//        String email = mEmail.getText().toString().trim();
+//        String password = mPassword.getText().toString().trim();
+//
+//        if(TextUtils.isEmpty(email)){
+//            mEmail.setError("Email is Required.");
+//            return;
+//        }
+//        if(TextUtils.isEmpty(password)){
+//            mPassword.setError("Password is Required");
+//            return;
+//        }
+//        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<AuthResult> task) {
+//                if(task.isSuccessful()){
+//                    Toast.makeText(LoginActivity.this,"Log In Successfully",Toast.LENGTH_SHORT).show();
+//                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//                    Intent intent = new Intent();
+//                    intent.setClass(LoginActivity.this, IncomingActivity.class);
+//                    startActivity(intent);
+//
+//                }else{
+//                    Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
+//                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null)
-        FirebaseUser currentUser = fAuth.getCurrentUser();
+        //FirebaseUser currentUser = fAuth.getCurrentUser();
     }
 
-
+    // Google sign-in result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -272,7 +268,9 @@ public class LoginActivity extends AppCompatActivity {
                                         if(task.isSuccessful())
                                         {
                                             // When task is successful
-
+                                            Intent intent = new Intent();
+                                            intent.setClass(LoginActivity.this, RoleSelection.class);
+                                            startActivity(intent);
                                             // Display Toast
                                             displayToast("Firebase authentication successful");
                                         }
