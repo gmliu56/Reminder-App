@@ -39,9 +39,18 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
+                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED
+                ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
+                ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR},1);
+                    new String[]{Manifest.permission.READ_CALENDAR,
+                            Manifest.permission.WRITE_CALENDAR,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.CAMERA},1);
         }
         // check signed-in instance and role
         if (currentUser != null){
@@ -74,8 +83,14 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
-            ToastUtils.showShortToast(getApplicationContext(),"must allow calendar permission");
+                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED
+                ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED
+                ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            ToastUtils.showShortToast(getApplicationContext(),"must allow all permission");
         }
     }
 

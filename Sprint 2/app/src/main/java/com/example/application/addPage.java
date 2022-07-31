@@ -4,14 +4,24 @@ package com.example.application;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.application.utils.Utils;
 import com.google.firebase.database.FirebaseDatabase;
+import com.luck.picture.lib.basic.PictureSelector;
+import com.luck.picture.lib.config.SelectMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.interfaces.OnResultCallbackListener;
+import com.luck.picture.lib.language.LanguageConfig;
+
+import java.util.ArrayList;
 
 // Page for users to add a task to their to-do list
 public class addPage extends AppCompatActivity {
@@ -25,6 +35,8 @@ public class addPage extends AppCompatActivity {
     //EditText send_duration;
     TimePicker time;
     String mSelectTime;
+    ImageView iv;
+    private String picUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +82,36 @@ public class addPage extends AppCompatActivity {
             }
         });
 
+
+        iv = findViewById(R.id.iv);
+
+        // 点击进行拍照
+        findViewById(R.id.tv_take_pic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PictureSelector.create(addPage.this)
+                        .openGallery(SelectMimeType.ofImage())
+                        .setLanguage(LanguageConfig.ENGLISH)
+                        .setImageEngine(GlideEngine.createGlideEngine())
+                        .forResult(new OnResultCallbackListener<LocalMedia>() {
+                            @Override
+                            public void onResult(ArrayList<LocalMedia> result) {
+                                if(null != result && !result.isEmpty()) {
+                                    LocalMedia localMedia = result.get(0);
+                                    Glide.with(addPage.this)
+                                            .load(localMedia.getPath())
+                                            .apply(RequestOptions.centerCropTransform()).into(iv);
+                                }
+                            }
+
+                            @Override
+                            public void onCancel() {
+
+                            }
+                        });
+            }
+        });
+
     }
 
     private void initWidget() {
@@ -82,4 +124,19 @@ public class addPage extends AppCompatActivity {
     }
 
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        /*结果回调*/
+//        if (requestCode == PictureSelector.SELECT_REQUEST_CODE) {
+//            if (data != null) {
+//                PictureBean pictureBean = data.getParcelableExtra(PictureSelector.PICTURE_RESULT);
+//
+//                //使用 Glide 加载图片
+//                Glide.with(this)
+//                        .load(pictureBean.getUri())
+//                        .apply(RequestOptions.centerCropTransform()).into(iv);
+//                picUrl = pictureBean.getUri().toString();            }
+//        }
+//    }
 }

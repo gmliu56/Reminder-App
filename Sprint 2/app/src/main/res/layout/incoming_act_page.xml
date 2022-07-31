@@ -146,7 +146,15 @@
 
         </LinearLayout>
 
-
     </RelativeLayout>
+
+    <ImageView
+        android:src="@mipmap/img"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/click_to_show_time"
+        android:id="@+id/iv_ok"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
 
 </RelativeLayout>

@@ -60,4 +60,6 @@ dependencies {
 
     // Splash Screen backward compatibility
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    implementation 'io.github.lucksiege:pictureselector:v3.10.5'
 }
