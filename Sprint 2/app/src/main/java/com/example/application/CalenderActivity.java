@@ -31,6 +31,7 @@ public class CalenderActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.calender_page);
         add_button = findViewById(R.id.add_button);
         view_button = findViewById(R.id.view_button);

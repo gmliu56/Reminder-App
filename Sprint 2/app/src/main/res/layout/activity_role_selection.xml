@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bb123456"
+    tools:context=".RoleSelection">
+
+    // Text: Who is using this device?
+    <TextView
+        android:id="@+id/role_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who is using this device?"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    // Patient button
+    <Button
+        android:id="@+id/button_patient"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/white"
+        android:text="Patient"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/role_question"/>
+
+    // Caretaker button
+    <Button
+        android:id="@+id/button_caretaker"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Caregiver"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_patient"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

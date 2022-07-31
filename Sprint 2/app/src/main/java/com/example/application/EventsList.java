@@ -15,6 +15,7 @@ public class EventsList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.activity_events_list);
         btn_add = findViewById(R.id.add_button2);
         btn_add.setOnClickListener(new View.OnClickListener() {
