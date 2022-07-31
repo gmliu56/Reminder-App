@@ -35,7 +35,6 @@ public class addPage extends AppCompatActivity {
         send_acts = findViewById(R.id.set_activity);
         send_tips = findViewById(R.id.set_tips);
 
-
         button_done = findViewById(R.id.addDone);
 
         button_done.setOnClickListener(new View.OnClickListener() {

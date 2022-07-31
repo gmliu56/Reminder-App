@@ -21,20 +21,28 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    MyApplication myApplication = (MyApplication) this.getApplication();
+    //MyApplication myApplication = (MyApplication) this.getApplication();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Handle the splash screen transition.
-        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        //SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTheme(R.style.Theme_Application);
+        //setTheme(androidx.appcompat.R.style.Theme_AppCompat);
 
         // get user authentication instance
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Ask for calender permission
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR},1);
+        }
         // check signed-in instance and role
         if (currentUser != null){
             // If user is currently logged in, take them to corresponding page
@@ -54,15 +62,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-
-        // Ask for calender permission
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.READ_CALENDAR,Manifest.permission.WRITE_CALENDAR},1);
-        }
 
 
     } // End of onCreate() method

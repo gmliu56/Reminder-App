@@ -37,6 +37,7 @@ public class CalenderActivity extends AppCompatActivity{
         view_button = findViewById(R.id.view_button);
         calendar = findViewById(R.id.calendarView);
 
+        // Calender user changes date and store it in day
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -46,15 +47,17 @@ public class CalenderActivity extends AppCompatActivity{
             }
         });
 
+        // Go to EventList when user clicks VIEW TASK
         view_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-
                 intent.setClass(CalenderActivity.this, EventsList.class);
                 startActivity(intent);
             }
         });
+
+        // Go to addPage when user clicks ADD TASK
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
