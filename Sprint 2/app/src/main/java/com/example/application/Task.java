@@ -12,16 +12,18 @@ public class Task {
     private String tips;
     private int hour;
     private int minute;
+    private String time;
     //private Date delete
 
     public Task() {
     }
 
-    public Task(String task_name, String tips, int hour, int minute) {
+    public Task(String task_name, String tips, int hour, int minute,String time) {
         this.task_name = task_name;
         this.tips = tips;
         this.hour = hour;
         this.minute = minute;
+        this.time = time;
         /*
         delete = null;
         this.countDownTime = countDownTime;
@@ -35,6 +37,7 @@ public class Task {
     public void setMinute(int minute) {
         this.minute = minute;
     }
+    public void setTime(int hour, int minute){this.time = "hour" + ":" + "minute";}
 
     public int getHour() {
         return hour;
@@ -43,6 +46,7 @@ public class Task {
     public int getMinute() {
         return minute;
     }
+    public String getTime(){return time;}
 
     public String getTask_name() {
         return task_name;
