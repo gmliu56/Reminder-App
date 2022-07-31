@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat);
         setContentView(R.layout.activity_login);
 
         //radioGroup = findViewById(R.id.radioButton);
