@@ -1,22 +1,24 @@
 package com.example.application;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
-import android.net.Uri;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
 import android.widget.Button;
-import android.widget.*;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-//import com.google.firebase.database.FirebaseDatabase;
-import java.util.HashMap;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 // Default page when caretakers sign-in and/or open their app
 public class CalenderActivity extends AppCompatActivity{
@@ -27,17 +29,21 @@ public class CalenderActivity extends AppCompatActivity{
     //TextView act_msg;
     //TextView tip_msg;
     // TextView time_msg;
+    //FirebaseAuth fAuth;
+    private DrawerLayout drawerLayout;
+    private NavigationView nav_view;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.calender_page);
         add_button = findViewById(R.id.add_button);
         view_button = findViewById(R.id.view_button);
         calendar = findViewById(R.id.calendarView);
+        //fAuth = FirebaseAuth.getInstance();
 
-        // Calender user changes date and store it in day
+        // Calender user changes date and store it in "day"
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -73,16 +79,60 @@ public class CalenderActivity extends AppCompatActivity{
             }
         });
 
+        // Toolbar/Navigation on top
+        drawerLayout = findViewById(R.id.drawer_layout);
+        nav_view = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+        // Make the Navigation drawer icon always appear on the action bar
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_navigation_white);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Respond to each menu item clicked
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_switch_role:
+                        // User wants to switch to another role, go to RoleSelection
+                        Toast.makeText(CalenderActivity.this, "Switching Role",Toast.LENGTH_SHORT).show();
+                        Intent intentSwitchRole = new Intent(CalenderActivity.this, RoleSelection.class);
+                        startActivity(intentSwitchRole);
+                        finish();
+                        return true;
+                    case R.id.nav_logout:
+                        // User wants to log out, display msg, sign out and return to LoginActivity
+                        Toast.makeText(CalenderActivity.this, "Logging out",Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intentLogOut = new Intent(CalenderActivity.this, LoginActivity.class);
+                        startActivity(intentLogOut);
+                        finish();
+                        return true;
+                }
+                return true;
+            }
+        });
 
-        // Retrieve user information if using Google sign-in
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            String personId = acct.getId();
-            Uri personPhoto = acct.getPhotoUrl();
-        }
+    }// End of onCreate() Method
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null)
+        //FirebaseUser currentUser = fAuth.getCurrentUser();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if (item.getItemId() == android.R.id.home) {
+            drawerLayout.openDrawer(GravityCompat.START);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

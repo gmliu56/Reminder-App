@@ -3,22 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../.gradle/caches/transforms-3/16647f1ffb260909ef2cd36b8fb67174/transformed/PictureSelector-2.1.0/res/layout/dialog_select_photo.xml" value="0.21666666666666667" />
         <entry key="..\:/Application/Application/app/src/main/res/layout/activity_add_page1.xml" value="0.5494791666666666" />
         <entry key="..\:/Application/Application/app/src/main/res/layout/add_page.xml" value="0.1" />
         <entry key="..\:/Application/Application/app/src/main/res/layout/calender_page.xml" value="0.3932291666666667" />
         <entry key="..\:/Application/Application/app/src/main/res/layout/patient_calender_page.xml" value="0.2586050724637681" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/activity_events_list.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/activity_login.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/activity_main.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/activity_role_selection.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/activity_sign_up_page.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/add_page.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/calender_page.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/content_login.xml" value="0.2672239108409321" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/incoming_act_page.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/list_item.xml" value="0.5494791666666666" />
-        <entry key="..\:/Sprint 2/Sprint 2/app/src/main/res/layout/splash_screen.xml" value="0.5494791666666666" />
         <entry key="..\:/Users/86182/Desktop/cmpt276-project-master-Sprint 2-Application/Sprint 2/Application/app/src/main/res/layout/add_page.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/86182/Desktop/cmpt276-project-master-Sprint 2-Application/Sprint 2/Application/app/src/main/res/layout/calender_page.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/86182/Desktop/cmpt276-project-master-Sprint 2-Application/Sprint 2/Application/app/src/main/res/layout/incoming_act_page.xml" value="0.1" />
@@ -56,29 +44,36 @@
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/login_page.xml" value="0.264" />
         <entry key="app/src/main/res/drawable/btn_custom.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/et_custom.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_camera_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_gallery_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launch_icon.xml" value="0.11" />
         <entry key="app/src/main/res/drawable/ic_launch_icon_blue.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_settings_black_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_slideshow_black_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_btn.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_events_list.xml" value="0.1105072463768116" />
+        <entry key="app/src/main/res/layout/activity_events_list.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_role_selection.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sign_up_page.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/add_page.xml" value="0.1359375" />
-        <entry key="app/src/main/res/layout/calender_page.xml" value="0.1105072463768116" />
+        <entry key="app/src/main/res/layout/add_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/calender_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/content_role_selection.xml" value="0.1105072463768116" />
         <entry key="app/src/main/res/layout/incoming_act_page.xml" value="0.1105072463768116" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.1105072463768116" />
         <entry key="app/src/main/res/layout/login_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1105072463768116" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.12512664640324214" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.11614583333333334" />
+        <entry key="app/src/main/res/menu/nav_drawer_menu.xml" value="0.14010416666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
