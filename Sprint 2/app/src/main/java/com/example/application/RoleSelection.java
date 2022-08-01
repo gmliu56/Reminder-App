@@ -14,7 +14,6 @@ public class RoleSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.activity_role_selection);
 
         btn_patient = (Button) findViewById(R.id.button_patient);

@@ -47,4 +47,9 @@
     <string name="image_view_item_transform_content_description">Represents an image view in the
         item
     </string>
+
+    <!--to toggle the open close button
+        of the navigation drawer-->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>

@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,16 +23,21 @@ import java.util.ArrayList;
 // Page of to-do list in a summary view
 public class EventsList extends AppCompatActivity {
     Button btn_add;
+
     RecyclerView recyclerView;
     ArrayList<Task> list;
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.activity_events_list);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Add task button
         btn_add = findViewById(R.id.add_button2);
 
         recyclerView=findViewById(R.id.taskListView);
@@ -62,8 +67,9 @@ public class EventsList extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Go to addPage
                 Intent intent = new Intent();
-                intent.setClass(EventsList.this,addPage.class);
+                intent.setClass(EventsList.this, addPage.class);
                 intent.putExtra("date", Utils.getNowTimeStr());
                 startActivity(intent);
             }
