@@ -19,13 +19,13 @@ public class RoleSelection extends AppCompatActivity {
         btn_patient = (Button) findViewById(R.id.button_patient);
         btn_caretaker = (Button) findViewById(R.id.button_caretaker);
 
-        // Set role to patient and go to IncomingActivity
+        // Set role to patient and go to EventList
         btn_patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent();
-                intent.setClass(RoleSelection.this, IncomingActivity.class);
+                intent.setClass(RoleSelection.this, EventsList.class);
                 startActivity(intent);
 
                 finish();

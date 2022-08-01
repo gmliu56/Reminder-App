@@ -30,7 +30,6 @@ import java.util.ArrayList;
 
 // Page for users to add a task to their to-do list
 public class addPage extends AppCompatActivity {
-
     Button button_done;
     Button button_back;
     Button button_camera;
@@ -51,12 +50,15 @@ public class addPage extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        initWidget();
+        // Initialize variables
         send_acts = findViewById(R.id.set_activity);
         send_tips = findViewById(R.id.set_tips);
-
         button_done = findViewById(R.id.addDone);
+        button_back = findViewById(R.id.back_button);
+        //send_duration = findViewById(R.id.duration1);
+        time = findViewById(R.id.timePicker);
 
+        // Done button clicked
         button_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +78,7 @@ public class addPage extends AppCompatActivity {
                 String task_time = hour + ":" + minute;
                 Task task = new Task(activity,tips,hour,minute,task_time);
                 //Task.taskArrayList.add(task);
+                // Push input to Firebase
                 FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
 
                 //add calender
@@ -97,7 +100,7 @@ public class addPage extends AppCompatActivity {
 
         iv = findViewById(R.id.iv);
 
-        // 点击进行拍照
+        // Click to take picture
         findViewById(R.id.tv_take_pic).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,16 +128,6 @@ public class addPage extends AppCompatActivity {
         });
 
     }
-
-    private void initWidget() {
-        button_done = findViewById(R.id.addDone);
-        button_back = findViewById(R.id.back_button);
-        send_acts = findViewById(R.id.set_activity);
-        send_tips = findViewById(R.id.set_tips);
-        //send_duration = findViewById(R.id.duration1);
-        time = findViewById(R.id.timePicker);
-    }
-
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

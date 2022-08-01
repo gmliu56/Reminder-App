@@ -2,16 +2,6 @@ package com.example.application;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,17 +19,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 // Page of to-do list in a summary view
 public class EventsList  extends addPage{
     Button btn_add;
-    CalendarView calendar;
     RecyclerView recyclerView;
     ArrayList<Task> list;
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
-    String day;
     Date date;
     ImageView image_back;
 
@@ -49,6 +39,7 @@ public class EventsList  extends addPage{
         setContentView(R.layout.activity_events_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(date).toString();
