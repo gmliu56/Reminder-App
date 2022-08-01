@@ -2,6 +2,11 @@ package com.example.application;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +39,7 @@ public class EventsList  extends addPage{
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
     String day;
+    Date date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +47,13 @@ public class EventsList  extends addPage{
         setContentView(R.layout.activity_events_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        calendar = findViewById(R.id.calendarView);
-        day = "2022-08-01";
+        date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Log.i(TAG, "onCreate: "+sdf.format(date).toString());
         // Add task button
         btn_add = findViewById(R.id.add_button2);
         recyclerView=findViewById(R.id.taskListView);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(day);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(sdf.format(date).toString());
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new EventListAdapter(this,list);
