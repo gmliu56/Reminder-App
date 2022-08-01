@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="16dp"
+    android:layout_margin="16dp"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,8 +24,9 @@
                     android:id="@+id/profile_pic"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/drug"/>
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/drug" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

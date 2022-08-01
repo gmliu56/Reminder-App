@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class EventsList  extends addPage{
     DatabaseReference databaseReference;
     String day;
     Date date;
+    ImageView image_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,13 @@ public class EventsList  extends addPage{
         setSupportActionBar(toolbar);
         date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Log.i(TAG, "onCreate: "+sdf.format(date).toString());
+        String currentDate = sdf.format(date).toString();
+        image_back = findViewById(R.id.back_to_calendar);
         // Add task button
         btn_add = findViewById(R.id.add_button2);
         recyclerView=findViewById(R.id.taskListView);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(sdf.format(date).toString());
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate);
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new EventListAdapter(this,list);
@@ -75,7 +79,14 @@ public class EventsList  extends addPage{
 
             }
         });
-
+        image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(EventsList.this,CalenderActivity.class);
+                startActivity(intent);
+            }
+        });
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

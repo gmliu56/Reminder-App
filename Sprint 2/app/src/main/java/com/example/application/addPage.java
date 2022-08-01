@@ -1,7 +1,10 @@
 package com.example.application;
 
 //import android.graphics.Color;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,7 +42,7 @@ public class addPage extends AppCompatActivity {
     String mSelectTime;
     ImageView iv;
     private String picUrl;
-
+    String Myday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,8 @@ public class addPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String day = getIntent().getStringExtra("date");
+                Myday= day;
+                Log.i(TAG, "onClick: "+day);
                 String activity = send_acts.getText().toString();
                 String tips = send_tips.getText().toString();
                 //String stringDuration = send_duration.getText().toString();

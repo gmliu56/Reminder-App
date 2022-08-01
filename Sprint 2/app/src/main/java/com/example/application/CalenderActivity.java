@@ -1,8 +1,11 @@
 package com.example.application;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,6 +51,7 @@ public class CalenderActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 day = i + "-" + (i1 + 1) + "-" + i2;
+                Log.i(TAG, "onSelectedDayChange: "+day);
                 Toast.makeText(CalenderActivity.this, day, Toast.LENGTH_SHORT).show();
                 //FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(new Task("drink","", 10, 30, 15));
             }

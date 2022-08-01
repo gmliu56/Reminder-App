@@ -7,16 +7,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".EventsList"
+    android:background="#ccffff"
     >
-<!--    Date and time-->
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/actionbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFCCCC"
         >
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/back_to_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_calendar_today_24">
 
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/back_to_calendar"
+            android:text="Back to Calender"></TextView>
+    </RelativeLayout>
 <!--    Button for adding task-->
-
     <Button
         android:id="@+id/add_button2"
         android:layout_width="wrap_content"
@@ -32,10 +49,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/actionbar"
         android:id="@+id/taskListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
-        android:dividerHeight="3dp"
-        />
+        android:dividerHeight="3dp" />
 </RelativeLayout>
