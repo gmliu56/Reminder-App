@@ -23,7 +23,6 @@ public class SignUpPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         setContentView(R.layout.activity_sign_up_page);
 
         btn_done = (Button) findViewById(R.id.btn_register_done);

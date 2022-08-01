@@ -13,41 +13,55 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_launch_icon"
+        android:icon="@drawable/ic_launch_icon_blue"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launch_icon_blue"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Application"
+        android:theme="@style/Theme.App.Starting.SplashScreen"
         tools:targetApi="31"
     >
+
         <activity
             android:name=".RoleSelection"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Application.NoActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_login"
+            android:label="Sign In"
             android:theme="@style/Theme.Application.NoActionBar" />
         <activity
             android:name=".EventsList"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Task List"
+            android:theme="@style/Theme.Application.NoActionBar"/>
         <activity
             android:name=".SignUpPage"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Application.NoActionBar"/>
         <activity
             android:name=".IncomingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Upcoming Tasks"
+            android:theme="@style/Theme.Application.NoActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Application.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalenderActivity" />
-        <activity android:name=".addPage" />
+
+        <activity android:name=".CalenderActivity"
+            android:label="Calender"
+            android:theme="@style/Theme.Application.NoActionBar"/>
+
+        <activity android:name=".addPage"
+            android:label="Add a Task"
+            android:theme="@style/Theme.Application.NoActionBar"/>
     </application>
 
 </manifest>

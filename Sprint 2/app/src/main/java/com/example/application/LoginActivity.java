@@ -28,7 +28,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
 
     // Firebase credentials
-    Button btn_login = null;
+    Button btn_login;
     Button btn_signup;
     //RadioGroup radioGroup = null;
     FirebaseAuth fAuth;
@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(androidx.appcompat.R.style.Theme_AppCompat);
         setContentView(R.layout.activity_login);
 
         //radioGroup = findViewById(R.id.radioButton);
@@ -73,14 +72,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            // Log in successful
                             Toast.makeText(LoginActivity.this,"Log in successfully",Toast.LENGTH_SHORT).show();
                             // Go to RoleSelection
                             Intent intent = new Intent();
                             intent.setClass(LoginActivity.this, RoleSelection.class);
                             startActivity(intent);
-
+                            finish();
 
                         }else{
+                            // Log in failed
                             Toast.makeText(LoginActivity.this,"Error! "+ task.getException().getMessage(),Toast.LENGTH_SHORT).show();;
                             //startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }

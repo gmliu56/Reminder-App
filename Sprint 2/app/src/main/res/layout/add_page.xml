@@ -7,6 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".addPage">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <!--    <Button-->
+    <!--        android:id="@+id/Time_set"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="104dp"-->
+    <!--        android:layout_marginTop="172dp"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:text="@string/Set_time"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="80sp"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        tools:ignore="MissingConstraints,missing constrain">-->
+    <!--    </Button>-->
+
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="0dp"

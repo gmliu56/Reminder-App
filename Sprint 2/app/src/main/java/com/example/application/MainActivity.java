@@ -23,18 +23,13 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     //MyApplication myApplication = (MyApplication) this.getApplication();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Handle the splash screen transition.
-        //SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setTheme(androidx.appcompat.R.style.Theme_AppCompat);
 
-        // get user authentication instance
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
         // Ask for calender permission
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
@@ -52,14 +47,20 @@ public class MainActivity extends AppCompatActivity {
                             Manifest.permission.READ_EXTERNAL_STORAGE,
                             Manifest.permission.CAMERA},1);
         }
-        // check signed-in instance and role
+
+        // get user authentication instance
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        // Check signed-in instance and role
         if (currentUser != null){
             // If user is currently logged in, take them to corresponding page
             if(true){
+                // Go to CalenderActivity because they are caretaker
                 Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
                 startActivity(caretakerIntent);
                 finish();
             }else{
+                // Go to IncomingActivity because they are patient
                 Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
                 startActivity(patientIntent);
                 finish();
