@@ -16,14 +16,28 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--    Date and time-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
 
-<!--    <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Time:"-->
-<!--            android:textSize="35sp"-->
-<!--            android:layout_gravity="left"-->
-<!--            />-->
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="35sp"
+        android:layout_gravity="left"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time:"
+            android:textSize="35sp"
+            android:layout_gravity="left"
+            />
+    </LinearLayout>
 
 <!--    Button for adding task-->
     <Button
@@ -38,7 +52,7 @@
         android:background="@drawable/round_btn"
         android:text="+"
         android:textSize="40dp" />
-
+<!--Event list-->
     <ListView
         android:id="@+id/taskListView"
         android:layout_width="match_parent"
