@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 // Default page when caretakers sign-in and/or open their app
-public class CalenderActivity extends AppCompatActivity{
+public class CalenderActivity extends AppCompatActivity {
     Button add_button = null;
     Button view_button = null;
     CalendarView calendar;
@@ -35,7 +35,7 @@ public class CalenderActivity extends AppCompatActivity{
     private Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calender_page);
         add_button = findViewById(R.id.add_button);
