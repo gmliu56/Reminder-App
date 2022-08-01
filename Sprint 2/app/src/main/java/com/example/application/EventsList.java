@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.CalendarView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.application.utils.Utils;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +31,7 @@ public class EventsList  extends addPage{
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
     Date date;
+    ImageView image_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +42,13 @@ public class EventsList  extends addPage{
 
         date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Log.i(TAG, "onCreate: "+sdf.format(date).toString());
+        String currentDate = sdf.format(date).toString();
+        image_back = findViewById(R.id.back_to_calendar);
         // Add task button
         btn_add = findViewById(R.id.add_button2);
-        recyclerView = findViewById(R.id.taskListView);
+        recyclerView=findViewById(R.id.taskListView);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(sdf.format(date).toString());
-
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate);
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new EventListAdapter(this,list);
@@ -70,8 +70,14 @@ public class EventsList  extends addPage{
 
             }
         });
-
-        // Add button is clicked
+        image_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(EventsList.this,CalenderActivity.class);
+                startActivity(intent);
+            }
+        });
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
