@@ -68,6 +68,11 @@
             android:layout_below="@id/calendarView"
             android:backgroundTint="@color/blue"
             android:text="IncomingActivity" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/incoming_button"
+            android:text="For development purpose:" />
 </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
