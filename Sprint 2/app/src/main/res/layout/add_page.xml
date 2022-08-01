@@ -54,16 +54,13 @@
         android:id="@+id/Tips_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="322dp"
         android:text="@string/Set_tips"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!--        tools:ignore="MissingConstraints">-->
 
     <TextView
         android:layout_marginTop="12dp"

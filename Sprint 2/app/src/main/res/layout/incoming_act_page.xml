@@ -3,21 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
-    >
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".IncomingActivity">
+<!--Text: Time for Task-->
     <TextView
-        android:id="@+id/comming_msg"
+        android:id="@+id/coming_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Will comming soon!"
-        android:textSize="30dp"
+        android:text="@string/time_for_task"
+        android:textSize="30sp"
         android:textColor="@color/purple_700"
         android:layout_centerHorizontal="true"
-
         />
+<!--    Task Image-->
     <ImageView
-        android:layout_below="@+id/comming_msg"
+        android:layout_below="@id/coming_msg"
         android:id="@+id/image"
         android:layout_width="250dp"
         android:layout_height="250dp"
@@ -25,21 +25,14 @@
         android:src="@drawable/drug"
         android:layout_centerHorizontal="true"
         />
-    <TextView
-        android:id="@+id/click_to_show_act"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/image"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:text=""/>
+
+<!--Show Activity -->
     <RelativeLayout
-        android:id="@+id/relative_name"
+        android:id="@+id/show_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@+id/image"
+        android:layout_below="@id/image"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -47,33 +40,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
-
+<!--        Text: Activity-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activity"
+                android:text="@string/activity"
                 android:textSize="18sp"/>
-
+<!--            Activity detail-->
             <TextView
-                android:id="@+id/act_detail"
+                android:id="@+id/activity_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Drug！Amoxycillin！"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
-
         </LinearLayout>
-
     </RelativeLayout>
 
-
+<!--Show Tips-->
     <RelativeLayout
-        android:id="@+id/click_to_show_tips"
+        android:id="@+id/show_tips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_name"
+        android:layout_below="@id/show_activity"
         android:paddingVertical="10dp">
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -84,11 +74,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tips:"
+                android:text="@string/tips"
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/phone_profile"
+                android:id="@+id/tips_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="5 pills"
@@ -99,29 +89,15 @@
 
     </RelativeLayout>
 
-    <View
-        android:layout_below="@+id/click_to_show_tips"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"/>
-
-
-
-    <View
-        android:layout_below="@+id/relative_name"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"/>
-
-
+<!--Show Time-->
     <RelativeLayout
-        android:id="@+id/click_to_show_time"
+        android:id="@+id/show_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@id/click_to_show_tips"
+        android:layout_below="@id/show_tips"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -133,11 +109,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time"
+                android:text="@string/time"
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/country_profile"
+                android:id="@+id/time_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="8:35PM"
@@ -145,16 +121,21 @@
                 android:textColor="@color/black"/>
 
         </LinearLayout>
-
     </RelativeLayout>
 
+<!--Check Complete Button-->
     <ImageView
-        android:src="@mipmap/img"
-        android:layout_marginTop="12dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/click_to_show_time"
-        android:id="@+id/iv_ok"
+        android:id="@+id/button_task_complete"
         android:layout_width="120dp"
-        android:layout_height="120dp"/>
+        android:layout_height="120dp"
+
+        android:layout_below="@id/show_time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_task_complete"
+        android:gravity="center"
+        android:padding="15dp"
+        android:src="@drawable/ic_baseline_check_24" />
 
 </RelativeLayout>
