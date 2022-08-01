@@ -28,7 +28,7 @@ public class EventsList extends AppCompatActivity {
     ArrayList<Task> list;
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
-
+    String day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class EventsList extends AppCompatActivity {
         setContentView(R.layout.activity_events_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //day = getIntent().getStringExtra("date");
         // Add task button
         btn_add = findViewById(R.id.add_button2);
 

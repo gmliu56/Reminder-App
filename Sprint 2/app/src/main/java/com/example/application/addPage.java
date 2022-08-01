@@ -48,10 +48,7 @@ public class addPage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         initWidget();
-        send_acts = findViewById(R.id.set_activity);
-        send_tips = findViewById(R.id.set_tips);
 
-        button_done = findViewById(R.id.addDone);
 
         button_done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +57,7 @@ public class addPage extends AppCompatActivity {
                 String activity = send_acts.getText().toString();
                 String tips = send_tips.getText().toString();
                 //String stringDuration = send_duration.getText().toString();
-                int duration;
+                //int duration;
                 if(activity.isEmpty()){
                     Toast.makeText(addPage.this, "Info missing!", Toast.LENGTH_SHORT).show();
                     return;
@@ -70,7 +67,8 @@ public class addPage extends AppCompatActivity {
                 String task_time = hour + ":" + minute;
                 Task task = new Task(activity,tips,hour,minute,task_time);
                 //Task.taskArrayList.add(task);
-                FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
+                //here I change a little bit with the path
+                FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").push().setValue(task);
 
                 //add calender
                 Utils.writeToCalendar(getApplicationContext(),activity,tips,day+" "+hour+":"+minute);
@@ -127,6 +125,10 @@ public class addPage extends AppCompatActivity {
         send_tips = findViewById(R.id.set_tips);
         //send_duration = findViewById(R.id.duration1);
         time = findViewById(R.id.timePicker);
+        send_acts = findViewById(R.id.set_activity);
+        send_tips = findViewById(R.id.set_tips);
+
+        button_done = findViewById(R.id.addDone);
     }
 
 
