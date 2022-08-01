@@ -19,8 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 // Page when user launch the app, it will check if there is user signed in
 public class MainActivity extends AppCompatActivity {
-
-    private FirebaseAuth mAuth;
     //MyApplication myApplication = (MyApplication) this.getApplication();
 
     @Override
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Ask for calender permission
+        // Check and/or Ask for Permissions: Calender, Camera, Read external storage
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(MainActivity.this,
@@ -48,17 +46,18 @@ public class MainActivity extends AppCompatActivity {
                             Manifest.permission.CAMERA},1);
         }
 
-        // get user authentication instance
-        mAuth = FirebaseAuth.getInstance();
+        // Get user authentication instance
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         // Check signed-in instance and role
         if (currentUser != null){
+            // *Currently no way of checking role, it always goes to caretaker for now
             // If user is currently logged in, take them to corresponding page
             if(true){
                 // Go to CalenderActivity because they are caretaker
                 Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
                 startActivity(caretakerIntent);
-                finish();
+                finish(); // prevent users going back to this page
             }else{
                 // Go to IncomingActivity because they are patient
                 Intent patientIntent = new Intent(MainActivity.this, IncomingActivity.class);
@@ -71,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(signInIntent);
             finish();
         }
-
-
 
     } // End of onCreate() method
 

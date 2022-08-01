@@ -24,8 +24,7 @@ public class Utils {
     public static Uri calanderURL = CalendarContract.Calendars.CONTENT_URI;
     public static Uri calanderEventURL = CalendarContract.Events.CONTENT_URI;;
     public static Uri calanderRemiderURL = CalendarContract.Reminders.CONTENT_URI;
-    
-    
+
     public static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     public static SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     public static void setNavigationBarStatusBarTranslucent(Activity activity) {

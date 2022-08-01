@@ -2,6 +2,7 @@ package com.example.application;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,19 +21,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Date;
+import java.util.Locale;
+
 // Default page when caretakers sign-in and/or open their app
 public class CalenderActivity extends AppCompatActivity {
-    Button add_button = null;
-    Button view_button = null;
+    Button add_button;
+    Button view_button;
     CalendarView calendar;
-    String day = "";
+    String day;
     //TextView act_msg;
     //TextView tip_msg;
     // TextView time_msg;
     //FirebaseAuth fAuth;
     private DrawerLayout drawerLayout;
-    private NavigationView nav_view;
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -42,6 +44,18 @@ public class CalenderActivity extends AppCompatActivity {
         view_button = findViewById(R.id.view_button);
         calendar = findViewById(R.id.calendarView);
         //fAuth = FirebaseAuth.getInstance();
+        // Go to IncomingActivity
+        Button incoming_button = findViewById(R.id.incoming_button);
+        incoming_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CalenderActivity.this, IncomingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // get current date and store in "day"
+        day = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
         // Calender user changes date and store it in "day"
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -81,8 +95,8 @@ public class CalenderActivity extends AppCompatActivity {
 
         // Toolbar/Navigation on top
         drawerLayout = findViewById(R.id.drawer_layout);
-        nav_view = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
+        NavigationView nav_view = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         // Make the Navigation drawer icon always appear on the action bar
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();

@@ -52,4 +52,10 @@
         of the navigation drawer-->
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="time_for_task">Time for Task!</string>
+    <string name="activity">Activity</string>
+    <string name="tips">Tips:</string>
+    <string name="time">Time</string>
+    <string name="add_task">Add task</string>
+    <string name="view_tasks">View tasks</string>
 </resources>

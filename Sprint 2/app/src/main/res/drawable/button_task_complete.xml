@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    when button not pressed-->
+    <item android:state_pressed="false">
+        <shape android:shape="oval">
+            <stroke android:color="@color/design_default_color_primary" android:width="2dp" />
+            <solid android:color="@color/light_green"/>
+            <size android:width="160dp" android:height="150dp"/>
+        </shape>
+    </item>
+
+<!--    when button is pressed-->
+    <item android:state_pressed="true"
+        >
+        <shape android:shape="oval">
+            <stroke android:color="@color/light_green" android:width="3dp" />
+            <solid android:color="@color/design_default_color_on_primary"/>
+            <size android:width="160dp" android:height="150dp"/>
+        </shape>
+    </item>
+</selector>
