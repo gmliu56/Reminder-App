@@ -67,7 +67,8 @@ public class addPage extends AppCompatActivity {
                 }
                 int hour = time.getHour();
                 int minute = time.getMinute();
-                Task task = new Task(activity,tips,hour,minute);
+                String task_time = hour + ":" + minute;
+                Task task = new Task(activity,tips,hour,minute,task_time);
                 //Task.taskArrayList.add(task);
                 FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
 
@@ -75,6 +76,7 @@ public class addPage extends AppCompatActivity {
                 Utils.writeToCalendar(getApplicationContext(),activity,tips,day+" "+hour+":"+minute);
 
                 Intent intent = new Intent(addPage.this, CalenderActivity.class);
+                Toast.makeText(addPage.this, "Task set successfully!", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
