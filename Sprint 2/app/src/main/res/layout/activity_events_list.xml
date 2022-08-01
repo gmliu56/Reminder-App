@@ -6,24 +6,6 @@
     android:orientation="vertical"
     tools:context=".EventsList"
     >
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
-        android:theme="?actionBarTheme"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="35sp"
-            android:layout_gravity="left"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <Button
         android:id="@+id/add_button2"
         android:layout_width="wrap_content"
@@ -37,15 +19,11 @@
         android:text="+"
         android:textSize="40dp" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="4dp"
-        android:divider="@color/green"
+        android:layout_marginTop="5dp"
         android:dividerHeight="3dp"
-        tools:listitem="@layout/list_item"
-
         />
 </RelativeLayout>

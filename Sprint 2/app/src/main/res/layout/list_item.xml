@@ -42,14 +42,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/Show_time_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:layout_alignParentRight="true"
-            android:textSize="30dp"
-            android:text="8:35 pm">
-        </TextView>
+            android:padding="15dp"
+            android:text="8:35 pm"
+            android:textSize="30dp"></TextView>
     </RelativeLayout>
 </LinearLayout>
