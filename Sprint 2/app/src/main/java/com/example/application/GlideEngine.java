@@ -12,8 +12,6 @@ import com.luck.picture.lib.utils.ActivityCompatHelper;
 
 public class GlideEngine implements ImageEngine {
 
-
-     */
     @Override
     public void loadImage(Context context, String url, ImageView imageView) {
         if (!ActivityCompatHelper.assertValidRequest(context)) {
@@ -49,7 +47,6 @@ public class GlideEngine implements ImageEngine {
                 .transform(new CenterCrop(), new RoundedCorners(8))
                 .into(imageView);
     }
-
 
 
     @Override

@@ -64,7 +64,7 @@ public class EventsList  extends addPage{
         recyclerView.setAdapter(myAdapter);
 
         // Add incomplete tasks to ArrayList
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate).child("NotComplete");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -76,7 +76,7 @@ public class EventsList  extends addPage{
                     if (TextUtils.isEmpty(date) || TextUtils.isEmpty(day)) {
                         continue;
                     }
-                    
+
                     // Do not display if dates do not match
                     if (!TextUtils.equals(date.replaceAll("-0", "-"), day.replaceAll("-0", "-"))) {
                         continue;
@@ -102,24 +102,7 @@ public class EventsList  extends addPage{
                     Utils.writeToCalendar(getApplicationContext(),task.getTask_name(),task.getTips(),task.getDate()+" "+task.getTime());
                 }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        // Add other complete tasks to ArrayList
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate).child("Complete");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                {
-                    Task task = dataSnapshot.getValue(Task.class);
-                    list.add(task);
-                    myAdapter.notifyDataSetChanged();
-                }
+                myAdapter.notifyDataSetChanged();
 
             }
 
