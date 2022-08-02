@@ -75,9 +75,14 @@ public class CalenderActivity extends AppCompatActivity {
         view_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(CalenderActivity.this, EventsList.class);
-                startActivity(intent);
+                if(day.isEmpty()){
+                    Toast.makeText(CalenderActivity.this, "Please tap on a date", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent();
+                    intent.setClass(CalenderActivity.this, EventsList.class);
+                    intent.putExtra("date", day);
+                    startActivity(intent);
+                }
             }
         });
 

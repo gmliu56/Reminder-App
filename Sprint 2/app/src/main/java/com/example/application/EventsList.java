@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,10 @@ public class EventsList  extends addPage{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_list);
+
+        // 目标日期
+        String day = getIntent().getStringExtra("date");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,10 +67,38 @@ public class EventsList  extends addPage{
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                {
-                    Task task = dataSnapshot.getValue(Task.class);
-                    list.add(task);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    // 目标对象
+                    Task task = null;
+                    // 日期
+                    String date = dataSnapshot.getKey();
+                    if (TextUtils.isEmpty(date) || TextUtils.isEmpty(day)) {
+                        continue;
+                    }
+                    // 为了方便比较 包含 2022-08-01的格式，需要对数据进行处理
+                    // 如果日期不匹配 不进行显示
+                    if (!TextUtils.equals(date.replaceAll("-0", "-"), day.replaceAll("-0", "-"))) {
+                        continue;
+                    }
+                    // 这一天里的事件  包含具体时间和事件
+                    if (dataSnapshot.getChildrenCount() < 1) {
+                        continue;
+                    }
+                    // 拿到具体对象
+                    for (DataSnapshot dataSnapshotTmp : dataSnapshot.getChildren()) {
+                        task = dataSnapshotTmp.getValue(Task.class);
+                        if (null == task) {
+                            continue;
+                        }
+                        // 把日期属性补进去
+                        task.setDate(date);
+                        list.add(task);
+                    }
+                }
+                // 插入提醒事件
+                //add calender
+                for(Task task : list) {
+                    Utils.writeToCalendar(getApplicationContext(),task.getTask_name(),task.getTips(),task.getDate()+" "+task.getTime());
                 }
                 myAdapter.notifyDataSetChanged();
             }
