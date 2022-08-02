@@ -41,7 +41,7 @@ public class EventsList  extends addPage{
         // create a date
         String day = getIntent().getStringExtra("date");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         date = new Date();
@@ -64,13 +64,12 @@ public class EventsList  extends addPage{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     // target
-                    Task task = null;
-                    // date
+                    Task task;
+                    // check each date
                     String date = dataSnapshot.getKey();
                     if (TextUtils.isEmpty(date) || TextUtils.isEmpty(day)) {
                         continue;
                     }
-
                     // Do not display if dates do not match
                     if (!TextUtils.equals(date.replaceAll("-0", "-"), day.replaceAll("-0", "-"))) {
                         continue;
@@ -79,10 +78,21 @@ public class EventsList  extends addPage{
                     if (dataSnapshot.getChildrenCount() < 1) {
                         continue;
                     }
-                    // get a specific target
-                    for (DataSnapshot dataSnapshotTmp : dataSnapshot.getChildren()) {
+                    // get a specific target date
+                    // Add incomplete tasks to ArrayList
+                    for (DataSnapshot dataSnapshotTmp : dataSnapshot.child("NotComplete").getChildren()) {
                         task = dataSnapshotTmp.getValue(Task.class);
-                        if (null == task) {
+                        if (task == null) {
+                            continue;
+                        }
+                        // add date attribute
+                        task.setDate(date);
+                        list.add(task);
+                    }
+                    // Add other complete tasks to ArrayList
+                    for (DataSnapshot dataSnapshotTmp : dataSnapshot.child("Complete").getChildren()) {
+                        task = dataSnapshotTmp.getValue(Task.class);
+                        if (task == null) {
                             continue;
                         }
                         // add date attribute
@@ -90,8 +100,9 @@ public class EventsList  extends addPage{
                         list.add(task);
                     }
                 }
+
                 // Insert reminder event
-                //add calender
+                // add calender
                 for(Task task : list) {
                     Utils.writeToCalendar(getApplicationContext(),task.getTask_name(),task.getTips(),task.getDate()+" "+task.getTime());
                 }
@@ -114,6 +125,7 @@ public class EventsList  extends addPage{
                 startActivity(intent);
             }
         });
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
