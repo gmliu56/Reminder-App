@@ -44,7 +44,7 @@ public class EventsList  extends addPage{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_list);
 
-        // 目标日期
+        // create a date
         String day = getIntent().getStringExtra("date");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,34 +68,34 @@ public class EventsList  extends addPage{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    // 目标对象
+                    // target
                     Task task = null;
-                    // 日期
+                    // date
                     String date = dataSnapshot.getKey();
                     if (TextUtils.isEmpty(date) || TextUtils.isEmpty(day)) {
                         continue;
                     }
-                    // 为了方便比较 包含 2022-08-01的格式，需要对数据进行处理
-                    // 如果日期不匹配 不进行显示
+                    
+                    // Do not display if dates do not match
                     if (!TextUtils.equals(date.replaceAll("-0", "-"), day.replaceAll("-0", "-"))) {
                         continue;
                     }
-                    // 这一天里的事件  包含具体时间和事件
+                    // Events of the day Contains specific times and events
                     if (dataSnapshot.getChildrenCount() < 1) {
                         continue;
                     }
-                    // 拿到具体对象
+                    // get a specific target
                     for (DataSnapshot dataSnapshotTmp : dataSnapshot.getChildren()) {
                         task = dataSnapshotTmp.getValue(Task.class);
                         if (null == task) {
                             continue;
                         }
-                        // 把日期属性补进去
+                        // add date attribute
                         task.setDate(date);
                         list.add(task);
                     }
                 }
-                // 插入提醒事件
+                // Insert reminder event
                 //add calender
                 for(Task task : list) {
                     Utils.writeToCalendar(getApplicationContext(),task.getTask_name(),task.getTips(),task.getDate()+" "+task.getTime());
