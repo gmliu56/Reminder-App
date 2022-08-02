@@ -7,6 +7,7 @@ import java.util.Date;
 
 // Task Object
 public class Task {
+    private String date;
     private String task_name;
     private String tips;
     private String time;
@@ -42,26 +43,24 @@ public class Task {
         this.tips = tips;
         this.time = time;
     }
+    /*
+        public void setHour(int hour) {
+            this.hour = hour;
+        }
 
+        public void setMinute(int minute) {
+            this.minute = minute;
+        }
+        public void setTime(int hour, int minute){this.time = "hour" + ":" + "minute";}
 
-/*
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
+        public int getHour() {
+            return hour;
+        }
 
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
-    public void setTime(int hour, int minute){this.time = "hour" + ":" + "minute";}
-
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
-    }
-    */
+        public int getMinute() {
+            return minute;
+        }
+        */
     public String getTime(){return time;}
 
     public String getTask_name() {
@@ -98,5 +97,17 @@ public class Task {
         this.tips = tips;
     }
 
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }
 

@@ -4,6 +4,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,10 @@ public class EventsList  extends addPage{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_list);
+
+        // create a date
+        String day = getIntent().getStringExtra("date");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -63,11 +68,38 @@ public class EventsList  extends addPage{
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                {
-                    Task task = dataSnapshot.getValue(Task.class);
-                    list.add(task);
-                    myAdapter.notifyDataSetChanged();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    // target
+                    Task task = null;
+                    // date
+                    String date = dataSnapshot.getKey();
+                    if (TextUtils.isEmpty(date) || TextUtils.isEmpty(day)) {
+                        continue;
+                    }
+                    
+                    // Do not display if dates do not match
+                    if (!TextUtils.equals(date.replaceAll("-0", "-"), day.replaceAll("-0", "-"))) {
+                        continue;
+                    }
+                    // Events of the day Contains specific times and events
+                    if (dataSnapshot.getChildrenCount() < 1) {
+                        continue;
+                    }
+                    // get a specific target
+                    for (DataSnapshot dataSnapshotTmp : dataSnapshot.getChildren()) {
+                        task = dataSnapshotTmp.getValue(Task.class);
+                        if (null == task) {
+                            continue;
+                        }
+                        // add date attribute
+                        task.setDate(date);
+                        list.add(task);
+                    }
+                }
+                // Insert reminder event
+                //add calender
+                for(Task task : list) {
+                    Utils.writeToCalendar(getApplicationContext(),task.getTask_name(),task.getTips(),task.getDate()+" "+task.getTime());
                 }
 
             }
