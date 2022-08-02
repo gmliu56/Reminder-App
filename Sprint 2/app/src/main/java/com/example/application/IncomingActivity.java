@@ -60,7 +60,12 @@ public class IncomingActivity extends AppCompatActivity {
                 if(currentTask != null){
                     currentTask.clearVariables();
                     Toast.makeText(IncomingActivity.this,
-                            "Task Completed!", Toast.LENGTH_LONG).show();}
+                            "Task Completed!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(IncomingActivity.this,
+                            "Task Already Completed!", Toast.LENGTH_LONG).show();
+                }
                 // Fetch next earliest task
                 fetchEarliestActivity();
             }
