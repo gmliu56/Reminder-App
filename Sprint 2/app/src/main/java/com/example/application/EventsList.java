@@ -49,16 +49,17 @@ public class EventsList  extends addPage{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(date).toString();
         image_back = findViewById(R.id.back_to_calendar);
-        // Add task button
+
         btn_add = findViewById(R.id.add_button2);
         recyclerView=findViewById(R.id.taskListView);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate);
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapter = new EventListAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
 
+        // Add incomplete tasks to ArrayList
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate).child("NotComplete");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,8 +67,9 @@ public class EventsList  extends addPage{
                 {
                     Task task = dataSnapshot.getValue(Task.class);
                     list.add(task);
+                    myAdapter.notifyDataSetChanged();
                 }
-                myAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -75,6 +77,26 @@ public class EventsList  extends addPage{
 
             }
         });
+        // Add other complete tasks to ArrayList
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate).child("Complete");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                {
+                    Task task = dataSnapshot.getValue(Task.class);
+                    list.add(task);
+                    myAdapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         image_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

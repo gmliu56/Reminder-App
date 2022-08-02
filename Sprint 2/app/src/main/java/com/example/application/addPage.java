@@ -76,10 +76,10 @@ public class addPage extends AppCompatActivity {
                 int hour = time.getHour();
                 int minute = time.getMinute();
                 String task_time = hour + ":" + minute;
-                Task task = new Task(activity,tips,hour,minute,task_time);
-                //Task.taskArrayList.add(task);
-                // Push input to Firebase
-                FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
+                Task task = new Task(activity, tips, hour, minute);
+
+                // Push task input to Firebase, the chile node will always be "NotComplete"
+                FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).child("NotComplete").push().setValue(task);
 
                 //add calender
                 Utils.writeToCalendar(getApplicationContext(),activity,tips,day+" "+hour+":"+minute);
@@ -90,6 +90,7 @@ public class addPage extends AppCompatActivity {
             }
         });
 
+        // Go back to previous activity
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

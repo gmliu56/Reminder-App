@@ -10,6 +10,7 @@
         android:id="@+id/coming_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/time_for_task"
         android:textSize="30sp"
         android:textColor="@color/purple_700"
@@ -18,7 +19,7 @@
 <!--    Task Image-->
     <ImageView
         android:layout_below="@id/coming_msg"
-        android:id="@+id/image"
+        android:id="@+id/task_image"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="20dp"
@@ -32,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@id/image"
+        android:layout_below="@id/task_image"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -51,7 +52,7 @@
                 android:id="@+id/activity_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Drug！Amoxycillin！"
+                android:text="@string/no_activity"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -81,7 +82,6 @@
                 android:id="@+id/tips_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 pills"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
 
@@ -116,7 +116,6 @@
                 android:id="@+id/time_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8:35PM"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
 
