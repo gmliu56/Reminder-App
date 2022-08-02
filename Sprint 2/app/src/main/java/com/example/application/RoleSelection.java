@@ -24,7 +24,6 @@ public class RoleSelection extends AppCompatActivity {
         btn_patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.setClass(RoleSelection.this, IncomingActivity.class);
                 startActivity(intent);
@@ -37,7 +36,6 @@ public class RoleSelection extends AppCompatActivity {
         btn_caretaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.setClass(RoleSelection.this, CalenderActivity.class);
                 startActivity(intent);
