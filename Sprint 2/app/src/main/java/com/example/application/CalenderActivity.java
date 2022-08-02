@@ -21,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.application.utils.Utils;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -62,12 +63,14 @@ public class CalenderActivity extends AppCompatActivity {
 
         // Calender user changes date and store it in "day"
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @SuppressLint("DefaultLocale")
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                day = i + "-" + (i1 + 1) + "-" + i2;
+
+                day = i + "-" + String.format("%02d", i1 + 1) + "-" + String.format("%02d", i2);
+
                 Log.i(TAG, "onSelectedDayChange: "+day);
                 Toast.makeText(CalenderActivity.this, day, Toast.LENGTH_SHORT).show();
-                //FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(new Task("drink","", 10, 30, 15));
             }
         });
 

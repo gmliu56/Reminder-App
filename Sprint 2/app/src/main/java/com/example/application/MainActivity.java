@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 ||
                 ContextCompat.checkSelfPermission(MainActivity.this,
                         Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            // Ask for permission
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.READ_CALENDAR,
                             Manifest.permission.WRITE_CALENDAR,
