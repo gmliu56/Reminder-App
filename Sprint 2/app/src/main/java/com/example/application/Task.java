@@ -1,19 +1,14 @@
 package com.example.application;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-
 // Task Object
 public class Task {
     private String date;
     private String task_name;
     private String tips;
-    private String time;
+    private String time; // Store time as String
     private int hour;
     private int minute;
-    private int timestamp;
+    private int timestamp; // Store time as integer number
 
     public Task() {
     }
@@ -23,8 +18,8 @@ public class Task {
         this.hour = hour;
         this.minute = minute;
 
-        this.time = time; // Store time as String
-        this.timestamp = (int)(hour * 100) + minute; // Store time as integer number
+        this.time = time;
+        this.timestamp = (hour * 100) + minute;
     }
 
     public Task(String task_name, String tips, int hour, int minute) {
@@ -33,8 +28,8 @@ public class Task {
         this.hour = hour;
         this.minute = minute;
 
-        this.time = hour + ":" + minute; // Store time as String
-        this.timestamp = (int)(hour * 100) + minute; // Store time as integer number
+        this.time = hour + ":" + minute;
+        this.timestamp = (hour * 100) + minute;
     }
 
     // Constructor only for displaying text
@@ -96,7 +91,6 @@ public class Task {
     public void setTips(String tips) {
         this.tips = tips;
     }
-
 
     public String getDate() {
         return date;

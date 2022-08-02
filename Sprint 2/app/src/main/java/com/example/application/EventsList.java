@@ -1,17 +1,11 @@
 package com.example.application;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
@@ -63,7 +57,7 @@ public class EventsList  extends addPage{
         myAdapter = new EventListAdapter(this,list);
         recyclerView.setAdapter(myAdapter);
 
-        // Add incomplete tasks to ArrayList
+        // Add tasks to ArrayList
         databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
