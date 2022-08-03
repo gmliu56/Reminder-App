@@ -56,6 +56,7 @@
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/button_task_complete.xml" value="0.16" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/complete_btn_state.xml" value="0.16" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.256" />
+        <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/ic_baseline_art_track_24.xml" value="0.154" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.187" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.16" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/ic_gallery_black_24dp.xml" value="0.16" />
@@ -69,6 +70,7 @@
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/drawable/side_nav_bar.xml" value="0.187" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/activity_events_list.xml" value="0.25" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/activity_incoming.xml" value="0.5494791666666666" />
+        <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/activity_individual_task_page.xml" value="0.15833333333333333" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/add_page.xml" value="0.18489583333333334" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/calender_page.xml" value="0.22" />
         <entry key="..\:/cmpt276-project/Sprint 2/app/src/main/res/layout/incoming_act_page.xml" value="0.16510416666666666" />

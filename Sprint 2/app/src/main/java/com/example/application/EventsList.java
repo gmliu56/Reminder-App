@@ -6,12 +6,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.application.utils.RecycleViewInterface;
 import com.example.application.utils.Utils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 // Page of to-do list in a summary view
-public class EventsList  extends addPage{
+public class EventsList  extends addPage implements RecycleViewInterface {
     Button btn_add;
     RecyclerView recyclerView;
     ArrayList<Task> list;
@@ -54,7 +56,14 @@ public class EventsList  extends addPage{
 
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myAdapter = new EventListAdapter(this,list);
+        //individual task jump to its own page
+        myAdapter = new EventListAdapter(this, list, new EventListAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(Task task) {
+                //click the individual task with toast.
+                Toast.makeText(EventsList.this, task.getTask_name() + "Clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(myAdapter);
 
         // Add tasks to ArrayList
@@ -108,7 +117,6 @@ public class EventsList  extends addPage{
                 }
 
                 myAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -116,7 +124,6 @@ public class EventsList  extends addPage{
 
             }
         });
-
         image_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +143,11 @@ public class EventsList  extends addPage{
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onItemClick(int position) {
 
     }
 }

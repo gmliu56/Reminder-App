@@ -9,12 +9,13 @@
     tools:context=".EventsList"
     android:background="#ccffff"
     >
+
     <RelativeLayout
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFCCCC"
-        >
+        android:background="#FFCCCC">
+
         <ImageView
             android:id="@+id/back_to_calendar"
             android:layout_width="wrap_content"
@@ -28,8 +29,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/back_to_calendar"
             android:text="Back to Calender" />
     </RelativeLayout>

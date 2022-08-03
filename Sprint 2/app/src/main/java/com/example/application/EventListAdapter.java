@@ -1,5 +1,6 @@
 package com.example.application;
 import android.content.Context;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,13 @@ import java.util.ArrayList;
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyViewHolder> {
     Context context;
     ArrayList<Task> list;
+    private ItemClickListener mItemListener;
 
-    public EventListAdapter(Context context, ArrayList<Task> list) {
+
+    public EventListAdapter(Context context, ArrayList<Task> list,ItemClickListener itemClickListener) {
         this.context = context;
         this.list = list;
+        this.mItemListener = itemClickListener;
     }
 
     @NonNull
@@ -32,12 +36,19 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.activity.setText(String.valueOf(task.getTask_name()));
         holder.tips.setText(String.valueOf(task.getTips()));
         holder.time.setText(String.valueOf(task.getTime()));
+        holder.itemView.setOnClickListener(view -> {
+            mItemListener.onItemClick(list.get(position));//
+        });
     }
 
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public interface ItemClickListener{
+        void onItemClick(Task task);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
