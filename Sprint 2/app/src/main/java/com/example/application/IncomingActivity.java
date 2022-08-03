@@ -61,8 +61,10 @@ public class IncomingActivity extends AppCompatActivity {
 
         // Fetch entry of tasks on current date from FireBase
         currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        incompleteTaskReference = FirebaseDatabase.getInstance().
-                getReference("Tasks and Dates").child(currentDate).child("NotComplete");
+        incompleteTaskReference = FirebaseDatabase.getInstance()
+                .getReference("Tasks and Dates")
+                .child(currentDate)
+                .child("NotComplete");
         // Check if there are tasks today, fetch task if there is
         incompleteTaskReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -156,7 +158,8 @@ public class IncomingActivity extends AppCompatActivity {
                     activity_detail.setText(currentTask.getTask_name());
                     tips_detail.setText(currentTask.getTips());
                     time_detail.setText(currentTask.getTime());
-
+                    String imageUrl = currentTask.getImageUrl();
+                    Glide.with(IncomingActivity.this).load(imageUrl).into(task_image);
                     // Set the alarm for the current task
                     setAlarm();
             }
@@ -195,7 +198,7 @@ public class IncomingActivity extends AppCompatActivity {
         // Initialize AlarmManager
         alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         // Set calendar to the current task time
         hour = currentTask.getHour();
@@ -224,7 +227,7 @@ public class IncomingActivity extends AppCompatActivity {
     private void cancelAlarm(){
         Intent intent = new Intent(this, AlarmReceiver.class);
         // The following intent must match exactly with the alarmIntent in setAlarm() method
-        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         if(alarmMgr == null){
             alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         }
