@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#CAE1FF"
     tools:context=".IncomingActivity">
-<!--Text: Time for Task-->
+    <!--Text: Time for Task-->
     <TextView
         android:id="@+id/coming_msg"
         android:layout_width="wrap_content"
@@ -17,24 +17,28 @@
         android:textColor="@color/purple_700"
         android:layout_centerHorizontal="true"
         />
-<!--    Task Image-->
-    <ImageView
-        android:layout_below="@id/coming_msg"
-        android:id="@+id/task_image"
+    <!--Task Image-->
+    <RelativeLayout
+        android:id="@+id/image_block"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/drug"
         android:layout_centerHorizontal="true"
-        />
-
+        android:layout_below="@id/coming_msg">
+        <ImageView
+            android:id="@+id/task_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/task" />
+    </RelativeLayout>
 <!--Show Activity -->
     <RelativeLayout
         android:id="@+id/show_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@id/task_image"
+        android:layout_below="@id/image_block"
         android:paddingVertical="10dp">
 
         <LinearLayout

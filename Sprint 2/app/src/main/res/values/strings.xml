@@ -59,4 +59,5 @@
     <string name="add_task">Add task</string>
     <string name="view_tasks">View tasks</string>
     <string name="no_activity">No Activity</string>
+    <string name="task">Task</string>
 </resources>
