@@ -41,7 +41,7 @@ public class addPage extends AppCompatActivity {
     String mSelectTime;
     ImageView iv;
     private String picUrl;
-    String Myday;
+    String myDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class addPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String day = getIntent().getStringExtra("date");
-                Myday= day;
+                myDay = day;
                 Log.i(TAG, "onClick: "+day);
                 String activity = send_acts.getText().toString();
                 String tips = send_tips.getText().toString();
@@ -75,11 +75,15 @@ public class addPage extends AppCompatActivity {
                 }
                 int hour = time.getHour();
                 int minute = time.getMinute();
-                String task_time = hour + ":" + minute;
-                Task task = new Task(activity, tips, hour, minute);
+                /* String task_time = hour + ":" + minute; */
+                Task task = new Task(activity, tips, hour, minute, false);
 
                 // Push task input to Firebase, the chile node will always be "NotComplete"
-                FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).child("NotComplete").push().setValue(task);
+                FirebaseDatabase.getInstance().getReference()
+                        .child("Tasks and Dates")
+                        .child(day)
+                        .child("NotComplete")
+                        .push().setValue(task);
 
                 //add calender
                 Utils.writeToCalendar(getApplicationContext(),activity,tips,day+" "+hour+":"+minute);

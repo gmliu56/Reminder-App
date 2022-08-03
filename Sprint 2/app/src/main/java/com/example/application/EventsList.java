@@ -32,7 +32,6 @@ public class EventsList  extends addPage implements RecycleViewInterface {
     ArrayList<Task> list;
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
-    Date date;
     ImageView image_back;
 
     @Override
@@ -40,15 +39,12 @@ public class EventsList  extends addPage implements RecycleViewInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_list);
 
-        // create a date
+        // Retrieve the selected date by the user in Calender
         String day = getIntent().getStringExtra("date");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = sdf.format(date).toString();
         image_back = findViewById(R.id.back_to_calendar);
 
         btn_add = findViewById(R.id.add_button2);
@@ -56,16 +52,28 @@ public class EventsList  extends addPage implements RecycleViewInterface {
 
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //individual task jump to its own page
+
+        // Individual task jump to its own page
         myAdapter = new EventListAdapter(this, list, new EventListAdapter.ItemClickListener() {
             @Override
             public void onItemClick(Task task) {
                 //click the individual task with toast.
                 Toast.makeText(EventsList.this, task.getTask_name() + "Clicked!", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(EventsList.this, IndividualTaskPage.class);
+                // Pass the task properties to IndividualTaskPage
+                intent.putExtra("date", day);
+                intent.putExtra("key", task.getKey());
+                if (task.getComplete()) {
+                    intent.putExtra("complete", "Complete");
+                }else{
+                    intent.putExtra("complete", "NotComplete");
+                }
+
                 startActivity(intent);
             }
         });
+
         recyclerView.setAdapter(myAdapter);
 
         // Add tasks to ArrayList
@@ -98,6 +106,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
                         }
                         // add date attribute
                         task.setDate(date);
+                        task.setKey(dataSnapshotTmp.getKey());
                         list.add(task);
                     }
                     // Add other complete tasks to ArrayList
