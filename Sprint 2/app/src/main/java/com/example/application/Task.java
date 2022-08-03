@@ -12,6 +12,8 @@ public class Task {
     private String time;
     //private Date delete
     //public static ArrayList<Task> taskArrayList = new ArrayList<>();
+    private String imageUrl;
+
     public Task() {
     }
 
@@ -20,24 +22,32 @@ public class Task {
         this.tips = tips;
         this.time = time;
     }
-/*
-    public void setHour(int hour) {
-        this.hour = hour;
+
+    public Task(String task_name, String tips, String time, String imageUrl) {
+        this.task_name = task_name;
+        this.tips = tips;
+        this.time = time;
+        this.imageUrl = imageUrl;
     }
 
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
-    public void setTime(int hour, int minute){this.time = "hour" + ":" + "minute";}
+    /*
+        public void setHour(int hour) {
+            this.hour = hour;
+        }
 
-    public int getHour() {
-        return hour;
-    }
+        public void setMinute(int minute) {
+            this.minute = minute;
+        }
+        public void setTime(int hour, int minute){this.time = "hour" + ":" + "minute";}
 
-    public int getMinute() {
-        return minute;
-    }
-    */
+        public int getHour() {
+            return hour;
+        }
+
+        public int getMinute() {
+            return minute;
+        }
+        */
     public String getTime(){return time;}
 
     public String getTask_name() {
@@ -56,5 +66,12 @@ public class Task {
         this.tips = tips;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
 
