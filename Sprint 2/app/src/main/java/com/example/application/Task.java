@@ -1,10 +1,5 @@
 package com.example.application;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-
 // Task Object
 public class Task {
     private String date;
@@ -46,14 +41,19 @@ public class Task {
 
     public String getTime(){return time;}
 
-    public String getTask_name() {
-        return task_name;
+    public String getDate() {
+        return date;
     }
 
-    public String getTips() {
-        return tips;
+    public int getTimestamp() {
+        return timestamp;
     }
 
+    public boolean getComplete(){ return isComplete; }
+
+    public String getKey(){ return key; }
+
+    // Setter
     public void setTask_name(String task_name) {
         this.task_name = task_name;
     }

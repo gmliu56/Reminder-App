@@ -20,9 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:backgroundTint="#2894ff"
+            android:elevation="4dp" />
+
 <!--    Calender-->
         <CalendarView
             android:id="@+id/calendarView"
@@ -64,13 +64,15 @@
             android:id="@+id/incoming_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_below="@id/calendarView"
+            android:layout_centerInParent="true"
             android:backgroundTint="@color/blue"
-            android:text="IncomingActivity" />
+            android:text="Incoming Activity"
+            android:textAllCaps="false" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:layout_below="@id/incoming_button"
             android:text="For development purpose:" />
 </RelativeLayout>

@@ -5,36 +5,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#CAE1FF"
-    tools:context=".IncomingActivity">
-<!--Text: Time for Task-->
-    <TextView
-        android:id="@+id/coming_msg"
-        android:layout_width="wrap_content"
+    tools:context=".IndividualTaskPage">
+    <!--Action Bar-->
+    <RelativeLayout
+        android:id="@+id/actionbar2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/time_for_task"
-        android:textSize="30sp"
-        android:textColor="@color/purple_700"
-        android:layout_centerHorizontal="true"
-        />
-<!--    Task Image-->
+        android:background="#FFCCCC">
+
+        <ImageView
+            android:id="@+id/back_to_eventList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_art_track_24">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/back_to_eventList"
+            android:text="Back to EventList"
+            android:textSize="20sp" />
+    </RelativeLayout>
+    <!--Task Image-->
     <ImageView
-        android:layout_below="@id/coming_msg"
-        android:id="@+id/task_image"
+        android:id="@+id/task_image2"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/drug"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/actionbar2"
+        android:src="@drawable/drug" />
 
-<!--Show Activity -->
+    <!--Show Activity -->
     <RelativeLayout
-        android:id="@+id/show_activity"
+        android:id="@+id/show_activity2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@id/task_image"
+        android:layout_below="@id/task_image2"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -42,15 +57,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
-<!--        Text: Activity-->
+            <!--        Text: Activity-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity"
                 android:textSize="18sp"/>
-<!--            Activity detail-->
+            <!--            Activity detail-->
             <TextView
-                android:id="@+id/activity_detail"
+                android:id="@+id/activity_detail2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no_activity"
@@ -59,12 +74,12 @@
         </LinearLayout>
     </RelativeLayout>
 
-<!--Show Tips-->
+    <!--Show Tips-->
     <RelativeLayout
-        android:id="@+id/show_tips"
+        android:id="@+id/show_tips2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/show_activity"
+        android:layout_below="@id/show_activity2"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -80,7 +95,7 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/tips_detail"
+                android:id="@+id/tips_detail2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -90,15 +105,15 @@
 
     </RelativeLayout>
 
-<!--Show Time-->
+    <!--Show Time-->
     <RelativeLayout
-        android:id="@+id/show_time"
+        android:id="@+id/show_time2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:background="?attr/selectableItemBackground"
-        android:layout_below="@id/show_tips"
+        android:layout_below="@id/show_tips2"
         android:paddingVertical="10dp">
 
         <LinearLayout
@@ -106,7 +121,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,28 +128,23 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/time_detail"
+                android:id="@+id/time_detail2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
-
         </LinearLayout>
     </RelativeLayout>
 
-<!--Check Complete Button-->
-    <ImageView
-        android:id="@+id/button_task_complete"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-
-        android:layout_below="@id/show_time"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_task_complete"
-        android:gravity="center"
-        android:padding="15dp"
-        android:src="@drawable/ic_baseline_check_24" />
+    <TextView
+        android:id="@+id/Show_status"
+        android:layout_below="@+id/show_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Complete"
+        android:textSize="30sp"
+        >
+    </TextView>
 
 </RelativeLayout>

@@ -6,7 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SignUpPage">
+    <RelativeLayout
+        android:id="@+id/actionbar_signup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#0080ff">
 
+        <ImageView
+            android:id="@+id/Back_to_Signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/left_arrow">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:layout_toEndOf="@id/Back_to_Signin"
+            android:text="Sign-up Page"
+            android:textSize="30sp" />
+    </RelativeLayout>
     <TextView
         android:id="@+id/tv_logo"
         android:layout_width="wrap_content"
@@ -86,6 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <Button
             android:id="@+id/btn_register_done"
             android:layout_width="match_parent"

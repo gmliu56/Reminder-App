@@ -4,8 +4,8 @@ import android.app.Application;
 
 // The app crashes when this activity is used, saved for now
 public class MyApplication extends Application {
-    // Global variable for other class to access
-    private boolean isRoleCaretaker;
+    // Global cached variable, will persist even when app is closed
+    public boolean isRoleCaretaker;
 
     // Check the user's role, return true if user is caretaker
     // Return the boolean value of isRoleCaretaker

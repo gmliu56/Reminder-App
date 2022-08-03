@@ -1,152 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/duration"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".addPage">
+    <!--Tool Bar on Top-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#2894ff"
+        android:elevation="4dp" />
 
-    <!--    <Button-->
-    <!--        android:id="@+id/Time_set"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginLeft="104dp"-->
-    <!--        android:layout_marginTop="172dp"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:text="@string/Set_time"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:textSize="80sp"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:ignore="MissingConstraints,missing constrain">-->
-    <!--    </Button>-->
-
+    <!--Time Picker-->
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="22dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:timePickerMode="spinner"
-        app:layout_constraintBottom_toTopOf="@+id/Act_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
-    <TextView
-        android:id="@+id/Act_text"
-        android:layout_width="wrap_content"
+    <!--Activity    -->
+    <LinearLayout
+        android:id="@+id/activity_row"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="280dp"
-        android:text="@string/Set_activity"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Tips_text"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/timePicker">
+        <!--Activity Text-->
+        <TextView
+            android:id="@+id/Act_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@string/Set_activity"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+        <!--Set Activity-->
+        <EditText
+            android:id="@+id/set_activity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="50dp"
+            android:autofillHints="nothing"
+            android:hint="@string/Enter_act"
+            android:inputType="textAutoCorrect"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <!--Tips-->
+    <LinearLayout
+        android:id="@+id/tips_row"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="322dp"
-        android:text="@string/Set_tips"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/activity_row"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <!--Tips Text-->
+        <TextView
+            android:id="@+id/Tips_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:text="@string/Set_tips"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+        <!--Set Tips-->
+        <EditText
+            android:id="@+id/set_tips"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="50dp"
+            android:autofillHints="nothing"
+            android:hint="@string/Enter_tips"
+            android:inputType="textAutoCorrect"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </LinearLayout>
 
+    <!--Choose Picture Text-->
     <TextView
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/Tips_text"
-        app:layout_constraintRight_toRightOf="@id/addDone"
-        app:layout_constraintLeft_toLeftOf="@id/addDone"
         android:id="@+id/tv_take_pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tips_row"
+        android:layout_centerInParent="true"
         android:padding="5dp"
         android:text="Click here to choose the picture"
         android:textColor="#333333"
         android:textSize="18sp" />
-
+    <!--Image View-->
     <ImageView
-        app:layout_goneMarginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_take_pic"
-        android:layout_gravity="center"
         android:id="@+id/iv"
-        app:layout_constraintRight_toRightOf="@id/addDone"
-        app:layout_constraintLeft_toLeftOf="@id/addDone"
+        android:layout_below="@id/tv_take_pic"
+        android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        android:layout_centerInParent="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_gallery_black_24dp"/>
 
+    <!--Done Button-->
     <Button
         android:id="@+id/addDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_below="@id/iv"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/blue"
+        android:layout_marginTop="30dp"
         android:text="@string/Set_done"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toBottomOf="@+id/iv" />
-
+         />
+    <!--Back Button-->
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="168dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/addDone"
+        android:layout_marginTop="20dp"
 
         android:text="Back"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toBottomOf="@+id/Tips_text" />
+         />
 
-    <EditText
-        android:id="@+id/set_activity"
-        android:layout_width="200dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="116dp"
-        android:autofillHints="nothing"
-        android:hint="@string/Enter_act"
-        android:inputType="textAutoCorrect"
-        android:paddingTop="0dp"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/Act_text"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Act_text"
-        app:layout_constraintTop_toTopOf="@id/Act_text" />
-
-
-    <EditText
-        android:id="@+id/set_tips"
-        android:layout_width="200dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="116dp"
-        android:autofillHints="nothing"
-        android:hint="@string/Enter_tips"
-        android:inputType="textAutoCorrect"
-        android:paddingTop="0dp"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/Tips_text"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Tips_text"
-        app:layout_constraintTop_toTopOf="@id/Tips_text" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

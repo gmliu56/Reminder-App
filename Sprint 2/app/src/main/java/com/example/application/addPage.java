@@ -66,8 +66,13 @@ public class addPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        assert ab != null;
+        ab.setDisplayHomeAsUpEnabled(true);
 
         // Initialize variables
         send_acts = findViewById(R.id.set_activity);
@@ -154,6 +159,7 @@ public class addPage extends AppCompatActivity {
             }
         });
 
+        // Go back to previous activity
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +169,7 @@ public class addPage extends AppCompatActivity {
 
 
         // Click to take picture
-        findViewById(R.id.tv_take_pic).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.iv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                  openImageChooser();
