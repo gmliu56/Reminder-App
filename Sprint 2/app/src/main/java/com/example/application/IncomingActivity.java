@@ -76,8 +76,13 @@ public class IncomingActivity extends AppCompatActivity {
                 if(currentTask != null){
                     currentTask.clearVariables();
                     Toast.makeText(IncomingActivity.this,
-                            "Task Completed!", Toast.LENGTH_LONG).show();}
-                // Fetch the next earliest task
+                            "Task Completed!", Toast.LENGTH_LONG).show();
+                } else {
+                Toast.makeText(IncomingActivity.this,
+                        "Task Already Completed!", Toast.LENGTH_LONG).show();
+                }
+
+            // Fetch the next earliest task
                 fetchEarliestActivity();
             }
         });
@@ -158,15 +163,19 @@ public class IncomingActivity extends AppCompatActivity {
         minute = currentTask.getMinute();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        // Set alarm using calendar's hour and minute
-        AlarmManager.AlarmClockInfo clockInfo = new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(),alarmIntent);
-        // Alarm will fire at the exact hour and min,
-        // but will use more system resource and battery life
-        alarmMgr.setAlarmClock(clockInfo, alarmIntent);
-        Toast.makeText(IncomingActivity.this,
-                "Alarm is set", Toast.LENGTH_SHORT).show();
+        if (hour > Calendar.HOUR_OF_DAY ||
+                (hour == Calendar.HOUR_OF_DAY && minute >= Calendar.MINUTE)){
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, minute);
+            // Set alarm using calendar's hour and minute
+            AlarmManager.AlarmClockInfo clockInfo = new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(),alarmIntent);
+            // Alarm will fire at the exact hour and min,
+            // but will use more system resource and battery life
+            alarmMgr.setAlarmClock(clockInfo, alarmIntent);
+            Toast.makeText(IncomingActivity.this,
+                    "Alarm is set", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     // Method of canceling the current alarm set
