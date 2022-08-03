@@ -23,6 +23,7 @@
         <activity
             android:name=".IndividualTaskPage"
             android:exported="false"
+            android:label="Task details"
             android:theme="@style/Theme.Application.NoActionBar"/>
         <activity
             android:name=".RoleSelection"

@@ -35,7 +35,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
     ArrayList<Task> list;
     EventListAdapter myAdapter;
     DatabaseReference databaseReference;
-    ImageView image_back;
+    //ImageView image_back;
     RelativeLayout mylyout;
 
     @Override
@@ -68,7 +68,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
             @Override
             public void onItemClick(Task task) {
                 //click the individual task with toast.
-                Toast.makeText(EventsList.this, task.getTask_name() + "Clicked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(EventsList.this, task.getTask_name() + "Clicked!", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(EventsList.this, IndividualTaskPage.class);
                 // Pass the task properties to IndividualTaskPage

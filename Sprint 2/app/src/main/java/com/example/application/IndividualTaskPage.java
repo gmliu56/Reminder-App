@@ -1,15 +1,20 @@
 package com.example.application;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,14 +43,22 @@ public class IndividualTaskPage extends AppCompatActivity {
         tips_detail2 = findViewById(R.id.tips_detail2);
         time_detail2 = findViewById(R.id.time_detail2);
         task_image2 = findViewById(R.id.task_image2);
+        // Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+//        assert ab != null;
+//        ab.setDisplayHomeAsUpEnabled(true);
+//        ab.setHomeButtonEnabled(true);
 
-        btn_back_event = findViewById(R.id.back_to_eventList);
-        btn_back_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IndividualTaskPage.super.onBackPressed();
-            }
-        });
+//        btn_back_event = findViewById(R.id.back_to_eventList);
+//        btn_back_event.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                IndividualTaskPage.super.onBackPressed();
+//            }
+//        });
 
         // Retrieve task properties from the previous activity EventsList
         day = getIntent().getStringExtra("date");
@@ -73,6 +86,8 @@ public class IndividualTaskPage extends AppCompatActivity {
                 activity_detail2.setText(taskSelected.getTask_name());
                 tips_detail2.setText(taskSelected.getTips());
                 time_detail2.setText(taskSelected.getTime());
+                String imageUrl = taskSelected.getImageUrl();
+                Glide.with(IndividualTaskPage.this).load(imageUrl).into(task_image2);
             }
 
             @Override
@@ -81,4 +96,6 @@ public class IndividualTaskPage extends AppCompatActivity {
             }
         });
     }
+
+
 }

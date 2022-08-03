@@ -36,6 +36,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.activity.setText(String.valueOf(task.getTask_name()));
         holder.tips.setText(String.valueOf(task.getTips()));
         holder.time.setText(String.valueOf(task.getTime()));
+
         holder.itemView.setOnClickListener(view -> {
             mItemListener.onItemClick(list.get(position));//
         });

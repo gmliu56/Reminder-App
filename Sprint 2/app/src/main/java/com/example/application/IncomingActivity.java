@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +43,6 @@ public class IncomingActivity extends AppCompatActivity {
     TextView tips_detail;
     TextView time_detail;
     ImageView task_image;
-
     DatabaseReference incompleteTaskReference;
     String currentTaskKey;
     private AlarmManager alarmMgr;
@@ -79,7 +80,6 @@ public class IncomingActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
 
         });
@@ -156,6 +156,7 @@ public class IncomingActivity extends AppCompatActivity {
                     activity_detail.setText(currentTask.getTask_name());
                     tips_detail.setText(currentTask.getTips());
                     time_detail.setText(currentTask.getTime());
+
                     // Set the alarm for the current task
                     setAlarm();
             }

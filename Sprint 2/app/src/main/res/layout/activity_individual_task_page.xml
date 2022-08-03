@@ -4,43 +4,52 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:background="#CAE1FF"
     tools:context=".IndividualTaskPage">
     <!--Action Bar-->
-    <RelativeLayout
-        android:id="@+id/actionbar2"
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/actionbar2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#FFCCCC">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/back_to_eventList"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"-->
+<!--            android:src="@drawable/ic_baseline_art_track_24">-->
+
+<!--        </ImageView>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_toEndOf="@id/back_to_eventList"-->
+<!--            android:text="Back to EventList"-->
+<!--            android:textSize="20sp" />-->
+<!--    </RelativeLayout>-->
+    <!--Tool Bar on Top-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFCCCC">
-
-        <ImageView
-            android:id="@+id/back_to_eventList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_baseline_art_track_24">
-
-        </ImageView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/back_to_eventList"
-            android:text="Back to EventList"
-            android:textSize="20sp" />
-    </RelativeLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#2894ff"
+        android:elevation="4dp" />
     <!--Task Image-->
     <ImageView
         android:id="@+id/task_image2"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:layout_below="@id/actionbar2"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/toolbar"
         android:src="@drawable/drug" />
 
     <!--Show Activity -->
