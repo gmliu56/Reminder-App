@@ -19,8 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:src="@drawable/ic_baseline_art_track_24"
-            android:focusable="true">
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_art_track_24">
+
         </ImageView>
 
         <TextView
@@ -135,8 +136,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!--Complete Button-->
-    <EditText
+    <TextView
         android:id="@+id/Show_status"
         android:layout_below="@+id/show_time2"
         android:layout_width="wrap_content"
@@ -145,6 +145,6 @@
         android:text="Complete"
         android:textSize="30sp"
         >
-    </EditText>
+    </TextView>
 
 </RelativeLayout>

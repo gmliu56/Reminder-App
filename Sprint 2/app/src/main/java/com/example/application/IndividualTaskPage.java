@@ -43,9 +43,7 @@ public class IndividualTaskPage extends AppCompatActivity {
         btn_back_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(IndividualTaskPage.this, EventsList.class);
-                startActivity(intent);
+                IndividualTaskPage.super.onBackPressed();
             }
         });
 
