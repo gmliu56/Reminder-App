@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,6 +20,7 @@ public class SignUpPage extends AppCompatActivity {
     Button btn_done = null;
     EditText mName,mEmail,mPassword,mRePassword;
     FirebaseAuth fAuth;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,16 @@ public class SignUpPage extends AppCompatActivity {
         mPassword = findViewById(R.id.et_password);
         fAuth = FirebaseAuth.getInstance();
         mRePassword = findViewById(R.id.et_repassword);
+        imageView = findViewById(R.id.Back_to_Signin);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(SignUpPage.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         // Done button, check if sign up information has correct format
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override

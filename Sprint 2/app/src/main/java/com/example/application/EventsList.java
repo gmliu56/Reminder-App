@@ -6,10 +6,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +36,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
     DatabaseReference databaseReference;
     Date date;
     ImageView image_back;
+    RelativeLayout mylyout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
         setSupportActionBar(toolbar);
 
         date = new Date();
+        mylyout = findViewById(R.id.mlayout);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = sdf.format(date).toString();
         image_back = findViewById(R.id.back_to_calendar);
@@ -67,6 +71,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
             }
         });
         recyclerView.setAdapter(myAdapter);
+        //creating itemtouch helper call back
 
         // Add tasks to ArrayList
         databaseReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates");

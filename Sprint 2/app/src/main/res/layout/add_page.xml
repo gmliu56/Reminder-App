@@ -7,20 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".addPage">
 
-    <!--    <Button-->
-    <!--        android:id="@+id/Time_set"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginLeft="104dp"-->
-    <!--        android:layout_marginTop="172dp"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:text="@string/Set_time"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:textSize="80sp"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:ignore="MissingConstraints,missing constrain">-->
-    <!--    </Button>-->
+    <RelativeLayout
+        android:id="@+id/actionbar_signup"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Set Activity"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+    </RelativeLayout>
 
     <TimePicker
         android:id="@+id/timePicker"
@@ -28,7 +29,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="60dp"
 
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="22dp"
         android:timePickerMode="spinner"
