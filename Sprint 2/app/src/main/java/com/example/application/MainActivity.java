@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 // Page when user launch the app, it will check if there is user signed in
 public class MainActivity extends AppCompatActivity {
-    //MyApplication myApplication = (MyApplication) this.getApplication();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser != null){
             // *Currently no way of checking role, it always goes to caretaker for now
             // If user is currently logged in, take them to corresponding page
+            /*boolean isRoleCaretaker = ((MyApplication) getApplication()).isCaretaker();*/
             if(true){
                 // Go to CalenderActivity because they are caretaker
                 Intent caretakerIntent = new Intent(MainActivity.this, CalenderActivity.class);
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     } // End of onCreate() method
-
 
     // Method of Requesting calender permission
     @Override
