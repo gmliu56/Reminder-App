@@ -48,10 +48,8 @@ public class EventsList  extends addPage implements RecycleViewInterface {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        date = new Date();
         mylyout = findViewById(R.id.mlayout);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = sdf.format(date).toString();
+
         image_back = findViewById(R.id.back_to_calendar);
 
         btn_add = findViewById(R.id.add_button2);
