@@ -4,7 +4,8 @@
     <item android:state_pressed="false">
         <shape android:shape="oval">
             <stroke android:color="@color/design_default_color_primary" android:width="2dp" />
-            <solid android:color="@color/light_green"/>
+            <solid android:color="@color/white">
+            </solid>
             <size android:width="160dp" android:height="150dp"/>
         </shape>
     </item>
@@ -13,9 +14,10 @@
     <item android:state_pressed="true"
         >
         <shape android:shape="oval">
-            <stroke android:color="@color/light_green" android:width="3dp" />
-            <solid android:color="@color/design_default_color_on_primary"/>
+            <stroke android:color="@color/blue" android:width="3dp" />
+            <solid android:color="@color/blue"/>
             <size android:width="160dp" android:height="150dp"/>
         </shape>
     </item>
+
 </selector>
