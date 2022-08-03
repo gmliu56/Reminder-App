@@ -52,7 +52,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
         image_back = findViewById(R.id.back_to_calendar);
 
         btn_add = findViewById(R.id.add_button2);
-        recyclerView=findViewById(R.id.taskListView);
+        recyclerView = findViewById(R.id.taskListView);
 
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -62,6 +62,8 @@ public class EventsList  extends addPage implements RecycleViewInterface {
             public void onItemClick(Task task) {
                 //click the individual task with toast.
                 Toast.makeText(EventsList.this, task.getTask_name() + "Clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(EventsList.this, IndividualTaskPage.class);
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(myAdapter);
@@ -148,6 +150,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
 
     @Override
     public void onItemClick(int position) {
+
 
     }
 }

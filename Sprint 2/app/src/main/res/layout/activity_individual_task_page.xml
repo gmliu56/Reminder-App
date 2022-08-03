@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:src="@drawable/ic_baseline_art_track_24">
+            android:src="@drawable/ic_baseline_art_track_24"
+            android:focusable="true">
 
         </ImageView>
 
@@ -28,9 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/back_to_eventList"
+            android:layout_toEndOf="@id/back_to_eventList"
             android:text="Back to EventList"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <ImageView
@@ -39,7 +40,7 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        android:layout_below="@+id/actionbar2"
+        android:layout_below="@id/actionbar2"
         android:src="@drawable/drug" />
 
     <!--Show Activity -->
@@ -142,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Complete"
-        android:textSize="30dp"
+        android:textSize="30sp"
         >
     </EditText>
 
