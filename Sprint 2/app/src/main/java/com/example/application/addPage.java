@@ -19,6 +19,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -57,8 +58,7 @@ public class addPage extends AppCompatActivity {
     String mSelectTime;
     ImageView iv;
     private String picUrl;
-    String Myday;
-    private static final int PICK_IMAGE_REQUEST = 1; // has to be a positive number, used for choosing image
+    String myDay;
     private Uri imageUri; // point to the image itself
     private StorageReference storageRef;
 
@@ -84,7 +84,7 @@ public class addPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String day = getIntent().getStringExtra("date");
-                Myday= day;
+                myDay= day;
                 Log.i(TAG, "onClick: "+day);
                 String activity = send_acts.getText().toString();
                 String tips = send_tips.getText().toString();
@@ -98,10 +98,12 @@ public class addPage extends AppCompatActivity {
                 int minute = time.getMinute();
                 String task_time = hour + ":" + minute;
 
+                // anh
                 // get the url to the image in storage and create the task and push to database
                 if(imageUri != null){
                     StorageReference imageRef = storageRef.child(System.currentTimeMillis()
                             + "." + getFileExtension(imageUri)); // unique name for each photo
+
                     //putting a photo at that name, need success listener to get the url to that photo
                     imageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -110,8 +112,12 @@ public class addPage extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     // create task inside and push our else it won't work
-                                    Task task = new Task(activity,tips,task_time, uri.toString());
-                                    FirebaseDatabase.getInstance().getReference().child("Tasks and Dates").child(day).push().setValue(task);
+                                    Task task = new Task(activity,tips, hour, minute, false, uri.toString());
+                                    FirebaseDatabase.getInstance().getReference()
+                                            .child("Tasks and Dates")
+                                            .child(day)
+                                            .child("NotComplete")
+                                            .push().setValue(task);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
