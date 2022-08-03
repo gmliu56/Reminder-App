@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,10 +48,14 @@ public class EventsList  extends addPage implements RecycleViewInterface {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        assert ab != null;
+        ab.setDisplayHomeAsUpEnabled(true);
 
         mylyout = findViewById(R.id.mlayout);
 
-        image_back = findViewById(R.id.back_to_calendar);
+        //image_back = findViewById(R.id.back_to_calendar);
 
         btn_add = findViewById(R.id.add_button2);
         recyclerView = findViewById(R.id.taskListView);
@@ -141,14 +146,14 @@ public class EventsList  extends addPage implements RecycleViewInterface {
 
             }
         });
-        image_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(EventsList.this,CalenderActivity.class);
-                startActivity(intent);
-            }
-        });
+//        image_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.setClass(EventsList.this,CalenderActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -37,7 +37,8 @@
             android:name=".EventsList"
             android:exported="false"
             android:label="Task List"
-            android:theme="@style/Theme.Application.NoActionBar" />
+            android:theme="@style/Theme.Application.NoActionBar"
+            android:parentActivityName=".CalenderActivity"/>
         <activity
             android:name=".SignUpPage"
             android:exported="false"
@@ -64,7 +65,8 @@
         <activity
             android:name=".addPage"
             android:label="Add a Task"
-            android:theme="@style/Theme.Application.NoActionBar"/>
+            android:theme="@style/Theme.Application.NoActionBar"
+            android:parentActivityName=".CalenderActivity"/>
 
         <receiver android:name=".AlarmReceiver"/>
 
