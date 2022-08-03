@@ -6,8 +6,6 @@ public class Task {
     private String task_name;
     private String tips;
     private String time;
-    //private Date delete
-    //public static ArrayList<Task> taskArrayList = new ArrayList<>();
     private String imageUrl;
     private int hour;
     private int minute;
@@ -15,7 +13,6 @@ public class Task {
 
     private boolean isComplete; // Completion status
     private String key; // Primary Key in Firebase
-
 
     public Task() {
     }
@@ -38,8 +35,16 @@ public class Task {
         this.tips = tips;
         this.time = time;
     }
+    // Getter
+    public String getTask_name() {
+        return task_name;
+    }
 
-    public String getTime(){return time;}
+    public String getTips(){
+        return tips;
+    }
+
+    public String getTime(){ return time; }
 
     public String getDate() {
         return date;
@@ -47,6 +52,18 @@ public class Task {
 
     public int getTimestamp() {
         return timestamp;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public boolean getComplete(){ return isComplete; }
@@ -62,16 +79,8 @@ public class Task {
         this.tips = tips;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public int getMinute() {
-        return minute;
     }
 
     public void setDate(String date) {
