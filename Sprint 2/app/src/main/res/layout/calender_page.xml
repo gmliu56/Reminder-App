@@ -22,6 +22,7 @@
             android:background="?attr/colorPrimary"
             android:backgroundTint="#2894ff"
             android:elevation="4dp" />
+
 <!--    Calender-->
         <CalendarView
             android:id="@+id/calendarView"
@@ -71,6 +72,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             android:layout_below="@id/incoming_button"
             android:text="For development purpose:" />
 </RelativeLayout>

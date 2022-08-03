@@ -10,31 +10,40 @@
     tools:context=".EventsList"
     android:background="#ccffff"
     >
-
-    <RelativeLayout
-        android:id="@+id/actionbar"
+    <!--Tool Bar on Top-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFCCCC">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:backgroundTint="#2894ff"
+        android:elevation="4dp" />
 
-        <ImageView
-            android:id="@+id/back_to_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:clickable="true"
-            android:src="@drawable/ic_baseline_calendar_today_24">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/actionbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#FFCCCC">-->
 
-        </ImageView>
+<!--        <ImageView-->
+<!--            android:id="@+id/back_to_calendar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:clickable="true"-->
+<!--            android:src="@drawable/ic_baseline_calendar_today_24">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/back_to_calendar"
-            android:text="Back to Calender" />
-    </RelativeLayout>
+<!--        </ImageView>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_toEndOf="@+id/back_to_calendar"-->
+<!--            android:text="Back to Calender" />-->
+<!--    </RelativeLayout>-->
+
 <!--    Button for adding task-->
     <Button
         android:id="@+id/add_button2"
@@ -43,18 +52,18 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/round_btn"
         android:text="+"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/actionbar"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
         android:layout_marginTop="5dp"
         android:dividerHeight="3dp" />
 </RelativeLayout>
