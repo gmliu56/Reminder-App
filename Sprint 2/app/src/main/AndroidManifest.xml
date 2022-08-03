@@ -62,6 +62,9 @@
         <activity android:name=".addPage"
             android:label="Add a Task"
             android:theme="@style/Theme.Application.NoActionBar"/>
+
+        <receiver android:name=".AlarmReceiver"/>
+
     </application>
 
 </manifest>

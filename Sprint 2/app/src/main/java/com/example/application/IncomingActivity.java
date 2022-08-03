@@ -1,6 +1,13 @@
 package com.example.application;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,20 +24,27 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 // Alert Page to display the upcoming task (reminder) when it is close to the time or on time
 public class IncomingActivity extends AppCompatActivity {
-    Task currentTask; // The most recent upcoming task
-    String currentDate;
+    Task currentTask; // The current upcoming task object
+    String currentDate; // Today's date
+    int hour;
+    int minute;
+
     ImageView button_task_complete; // Button for completing the task
     TextView activity_detail;
     TextView tips_detail;
     TextView time_detail;
     ImageView task_image;
+
     DatabaseReference incompleteTaskReference;
     String currentTaskKey;
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +55,20 @@ public class IncomingActivity extends AppCompatActivity {
         time_detail = findViewById(R.id.time_detail);
         task_image = findViewById(R.id.task_image);
         button_task_complete = findViewById(R.id.button_task_complete);
-
+        createNotificationChannel();
         // Fetch entry of tasks on current date from FireBase
         currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        incompleteTaskReference = FirebaseDatabase.getInstance().getReference("Tasks and Dates").child(currentDate).child("NotComplete");
+        incompleteTaskReference = FirebaseDatabase.getInstance().
+                getReference("Tasks and Dates").child(currentDate).child("NotComplete");
         fetchEarliestActivity();
+
 
         // Task Complete Button is clicked, user set the task complete manually
         button_task_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Delete the current Task in "NotComplete"
-                deleteEarliestActivity();
+                cancelAlarm(); // Cancels the current alarm
+                deleteEarliestActivity(); // Delete the current Task in "NotComplete"
                 // Add the current Task to "Complete"
                 FirebaseDatabase.getInstance().getReference().
                         child("Tasks and Dates").child(currentDate).child("Complete").
@@ -61,11 +77,21 @@ public class IncomingActivity extends AppCompatActivity {
                     currentTask.clearVariables();
                     Toast.makeText(IncomingActivity.this,
                             "Task Completed!", Toast.LENGTH_LONG).show();}
-                // Fetch next earliest task
+                // Fetch the next earliest task
                 fetchEarliestActivity();
             }
         });
 
+    }
+
+    private void createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "soundmemoChannel";
+            String description = "Channel for soundmemo";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel("soundmemo", name, importance);
+            notificationChannel.setDescription(description);
+        }
     }
 
     // Method of fetching/pulling the earliest activity from Firebase
@@ -86,6 +112,8 @@ public class IncomingActivity extends AppCompatActivity {
                     activity_detail.setText(currentTask.getTask_name());
                     tips_detail.setText(currentTask.getTips());
                     time_detail.setText(currentTask.getTime());
+                    // Set the alarm for the current task
+                    setAlarm();
                 }
             }
 
@@ -116,6 +144,41 @@ public class IncomingActivity extends AppCompatActivity {
         if(currentTaskKey != null) {
             incompleteTaskReference.child(currentTaskKey).removeValue();
         }
+    }
+
+    // Method of setting alarm to the current task's time
+    private void setAlarm(){
+        // Initialize AlarmManager
+        alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        // Set calendar to the current task time
+        hour = currentTask.getHour();
+        minute = currentTask.getMinute();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        // Set alarm using calendar's hour and minute
+        AlarmManager.AlarmClockInfo clockInfo = new AlarmManager.AlarmClockInfo(calendar.getTimeInMillis(),alarmIntent);
+        // Alarm will fire at the exact hour and min,
+        // but will use more system resource and battery life
+        alarmMgr.setAlarmClock(clockInfo, alarmIntent);
+        Toast.makeText(IncomingActivity.this,
+                "Alarm is set", Toast.LENGTH_SHORT).show();
+    }
+
+    // Method of canceling the current alarm set
+    private void cancelAlarm(){
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        // The following intent must match exactly with the alarmIntent in setAlarm() method
+        alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        if(alarmMgr == null){
+            alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        }
+        // Cancels the intent
+        alarmMgr.cancel(alarmIntent);
     }
 
 }
