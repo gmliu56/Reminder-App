@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyViewHolder> {
@@ -36,7 +39,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.activity.setText(String.valueOf(task.getTask_name()));
         holder.tips.setText(String.valueOf(task.getTips()));
         holder.time.setText(String.valueOf(task.getTime()));
-
+        //Glide.with(EventListAdapter.this).load(task.getImageUrl()).into(imageView);
         holder.itemView.setOnClickListener(view -> {
             mItemListener.onItemClick(list.get(position));//
         });
