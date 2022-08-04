@@ -59,10 +59,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:layout_below="@id/task_image2"
-        android:paddingVertical="10dp">
+        android:paddingVertical="5dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
@@ -73,10 +73,11 @@
                 android:text="@string/activity"
                 android:textSize="18sp"/>
             <!--            Activity detail-->
-            <TextView
+            <EditText
                 android:id="@+id/activity_detail2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
                 android:text="@string/no_activity"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
@@ -88,11 +89,10 @@
         android:id="@+id/show_tips2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/show_activity2"
-        android:paddingVertical="10dp">
+        android:layout_below="@id/show_activity2">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
@@ -103,10 +103,11 @@
                 android:text="@string/tips"
                 android:textSize="18sp"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/tips_detail2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
                 android:textSize="26sp"
                 android:textColor="@color/black"/>
 
@@ -123,10 +124,10 @@
         android:focusable="true"
         android:background="?attr/selectableItemBackground"
         android:layout_below="@id/show_tips2"
-        android:paddingVertical="10dp">
+        android:paddingVertical="5dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="70dp">
@@ -138,6 +139,35 @@
 
             <TextView
                 android:id="@+id/time_detail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="200dp"
+                android:textSize="26sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+    </RelativeLayout>
+<!--    Show Completion Status-->
+    <RelativeLayout
+        android:id="@+id/show_completion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:layout_below="@id/show_time2"
+        android:paddingVertical="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="70dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/completion_status"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/completion_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -145,15 +175,14 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/Show_status"
-        android:layout_below="@+id/show_time2"
+    <Button
+        android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/show_completion"
+        android:layout_marginTop="0dp"
         android:layout_centerInParent="true"
-        android:text="Complete"
-        android:textSize="30sp"
-        >
-    </TextView>
+        android:backgroundTint="@color/blue"
+        android:text="@string/submit"/>
 
 </RelativeLayout>

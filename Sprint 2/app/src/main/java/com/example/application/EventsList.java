@@ -72,6 +72,7 @@ public class EventsList  extends addPage implements RecycleViewInterface {
 
                 Intent intent = new Intent(EventsList.this, IndividualTaskPage.class);
                 // Pass the task properties to IndividualTaskPage
+                intent.putExtra("task_name", task.getTask_name());
                 intent.putExtra("date", day);
                 intent.putExtra("key", task.getKey());
                 if (task.getComplete()) {

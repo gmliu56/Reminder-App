@@ -60,4 +60,6 @@
     <string name="view_tasks">View tasks</string>
     <string name="no_activity">No Activity</string>
     <string name="task">Task</string>
+    <string name="completion_status">Completion Status</string>
+    <string name="submit">submit</string>
 </resources>

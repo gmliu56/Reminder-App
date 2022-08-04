@@ -97,6 +97,7 @@
         <entry key="app/src/main/res/drawable/round_btn.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_events_list.xml" value="0.1105072463768116" />
+        <entry key="app/src/main/res/layout/activity_individual_task_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_role_selection.xml" value="0.165" />

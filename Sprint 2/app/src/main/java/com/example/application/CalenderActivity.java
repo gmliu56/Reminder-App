@@ -2,8 +2,10 @@ package com.example.application;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.application.utils.ToastUtils;
 import com.example.application.utils.Utils;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,6 +62,14 @@ public class CalenderActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Check Calendar R/W Permission
+        if(ContextCompat.checkSelfPermission(CalenderActivity.this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED
+        || ContextCompat.checkSelfPermission(CalenderActivity.this, Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(CalenderActivity.this,
+                    new String[]{Manifest.permission.READ_CALENDAR,
+                    Manifest.permission.WRITE_CALENDAR}, 1);
+        }
 
         // get current date and store in "day"
         day = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
@@ -160,5 +173,16 @@ public class CalenderActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (ContextCompat.checkSelfPermission(CalenderActivity.this,
+                Manifest.permission.READ_CALENDAR)!= PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(CalenderActivity.this,
+                        Manifest.permission.WRITE_CALENDAR)!= PackageManager.PERMISSION_GRANTED
+                ){
+            ToastUtils.showShortToast(getApplicationContext(),"must allow calendar permission");
+        }
+    }
 
 }
