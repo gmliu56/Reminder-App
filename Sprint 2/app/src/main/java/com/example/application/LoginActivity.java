@@ -145,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Google Sign-in
         // Reference: Geeksforgeeks
-        googleSignInButton = findViewById(R.id.sign_in_button);
+        //googleSignInButton = findViewById(R.id.sign_in_button);
         googleSignInButton.setSize(SignInButton.SIZE_STANDARD);
         // Initialize sign in options
         GoogleSignInOptions googleSignInOptions=new GoogleSignInOptions.Builder(
