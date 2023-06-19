@@ -8,23 +8,19 @@ SoudMemo will mainly provide technical solutions for the deep forgetfulness of m
 # Bulid Status
 This application is still in development and currently only includes the basic framework. 07.7.2022
 
-# Gulidelines:
-SoundMemo will use JAVA 8 as the main development language and use the integrated IDE - Android studio (version 2021.2.1) as the main development compiler. The development team will follow an agile development process and use Gitlab for collaborative work. Regarding databases, database developers will use services such as the real-time database provided by Google's Firebase app development platform to build 
-database parts such as user information. Regarding user interface design, UI designers will use Figma to design the detailed parts of the user interface. And the application and user interface will be adapted to four-inch and six-inch mainstream mobile handheld devices running the Android OS version 7.0 (API 24, Nougat) and newer, and 10-inch mainstream tablets also running the Android OS version 7.0 (API 24, Nougat) and newer. 
+# Contributions
+This project was developed jointly by all members listed below. Details are followed:
 
-# Installation
+Nicholas Liu: Push Notification & Alarm, Data Synchronization with Firebase, To-do List Edit Page, UX Design & Navigation, Login Function
 
-**Start by cloning the repository with the following command in the desireed folder**:
+Bofan Yu: Product Manager, SignUp Page & Function, Camera Function
 
-**Clone with SHH
-```bash
-git@csil-git1.cs.surrey.sfu.ca:cmpt276-group8/cmpt276-project.git
-```
+Carl Yuan: To-do List & Adding Page, Alert Page, Role Selection Page, UI Design & Implementation
 
-**Clone with HTTP
-```bash
-https://csil-git1.cs.surrey.sfu.ca/cmpt276-group8/cmpt276-project.git
-```
+Zihang Yuan: Calendar Page & Function, Logo Design, App Testing
+
+Anh Vu: Task Completion Functions
+
 ## File describe:
 
 **add_page.xml**
@@ -47,13 +43,13 @@ This file is the basic page that the patient can't do anything with, and it cont
 This file contains the API for verifying account and password functions with Google account login. 
 **Still not in line with the actual use of the scene.**
 
-## Authors
+## Contact
 
 SFU cmpt276: Introduction to Software Engineering
 
 Group 08
 
-Team Member:
+Team Members:
 
 HaoxiangYuan(Carl)  haoxiang_yuan@sfu.ca 
 
